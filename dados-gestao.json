@@ -1,1 +1,42 @@
-{"version":2,"ligacoes":[],"demandas":[]}
+{
+  "version": 2,
+  "updatedAt": "2026-04-23T18:52:51.124Z",
+  "ligacoes": [
+    {
+      "id": "arobhzep8limobua1is",
+      "token": "LIG-2026-001",
+      "currentStage": 0,
+      "stageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-23",
+          "protocol": null,
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-23T18:52:51.124Z",
+      "updatedAt": "2026-04-23T18:52:51.124Z",
+      "tipo": "nova_ligacao",
+      "titulo": "teste",
+      "uc": "",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-23",
+      "carga": "",
+      "notes": "",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "cliente": {
+        "nome": "",
+        "doc": "",
+        "responsavel": "",
+        "tel": "",
+        "email": "",
+        "obs": ""
+      },
+      "stakeholders": [],
+      "attachments": []
+    }
+  ],
+  "demandas": []
+}
