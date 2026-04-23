@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDD — Gestão de Demandas das Distribuidoras | BESCO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      /* ── Paleta BESCO ── */
+      --primary:#3300cc;
+      --primary-light:#5533dd;
+      --primary-dark:#2200aa;
+      --navy:#38435d;
+      --cinza-escuro:#445171;
+      --cinza-medio:#545e73;
+      --cinza-perola:#e4e5ee;
+      --dourado:#b8860b;
+      /* ── Utilitários ── */
+      --success:#059669;--warning:#d97706;--danger:#dc2626;
+      --bg:#f0f1f8;--card:#fff;--border:#dde0ee;--text:#1a1f36;--muted:#545e73;
+      --violet:#3300cc;--sky:#445171;--orange:#b8860b;
+      --sh:0 1px 4px rgba(51,0,204,.08);--sh-md:0 4px 16px rgba(51,0,204,.12);--sh-lg:0 12px 36px rgba(51,0,204,.18);
+      --r:8px;--r-lg:12px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+    /* HEADER */
+    .hdr{background:var(--navy);color:#fff;padding:0 24px;display:flex;align-items:center;gap:16px;height:62px;box-shadow:0 2px 12px rgba(0,0,0,.25);position:sticky;top:0;z-index:200;border-bottom:3px solid var(--primary);}
+    .hdr-logo{display:flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;}
+    .hdr-logo-badge{background:var(--primary);color:#fff;font-size:11px;font-weight:900;letter-spacing:.5px;padding:4px 9px;border-radius:5px;text-transform:uppercase;}
+    .hdr-logo-text{display:flex;flex-direction:column;line-height:1.1;}
+    .hdr-logo-name{font-size:13px;font-weight:800;color:#fff;letter-spacing:.2px;}
+    .hdr-logo-sub{font-size:9px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.5px;text-transform:uppercase;}
+    .hdr-nav{display:flex;gap:4px;flex:1;}
+    .nav-btn{background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.2px;transition:all .18s;display:flex;align-items:center;gap:6px;}
+    .nav-btn:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3);}
+    .nav-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:700;box-shadow:0 2px 8px rgba(51,0,204,.4);}
+    .hdr-actions{display:flex;gap:6px;}
+    .btn-ico{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;width:34px;height:34px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .18s;}
+    .btn-ico:hover{background:rgba(255,255,255,.28);}
+    /* MAIN */
+    .main{padding:22px 24px;}
+    .view{display:none;}.view.active{display:block;}
+    /* TOOLBAR */
+    .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+    .toolbar-title{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.2px;}
+    .toolbar-spacer{flex:1;}
+    .search-wrap{position:relative;}
+    .search-wrap i{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;}
+    .search-wrap input{padding:7px 11px 7px 29px;border:1px solid var(--border);border-radius:6px;font-size:13px;width:200px;background:#fff;transition:border-color .18s;}
+    .search-wrap input:focus{outline:none;border-color:var(--primary-light);}
+    select.fsel{padding:7px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:#fff;cursor:pointer;}
+    select.fsel:focus{outline:none;border-color:var(--primary-light);}
+    /* DAYS TOGGLE */
+    .days-toggle{display:flex;background:#e2e8f0;border-radius:6px;padding:2px;gap:2px;}
+    .dtb{padding:5px 10px;border-radius:4px;border:none;background:transparent;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .18s;}
+    .dtb.active{background:#fff;color:var(--primary);box-shadow:var(--sh);}
+    /* BUTTONS */
+    .btn{padding:7px 15px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:6px;transition:all .18s;}
+    .btn-primary{background:var(--primary);color:#fff;}.btn-primary:hover{background:var(--primary-dark);}
+    .btn-success{background:var(--success);color:#fff;}.btn-success:hover{background:#059669;}
+    .btn-danger{background:var(--danger);color:#fff;}.btn-danger:hover{background:#dc2626;}
+    .btn-warning{background:var(--warning);color:#fff;}.btn-warning:hover{background:#d97706;}
+    .btn-outline{background:#fff;border:1px solid var(--border);color:var(--text);}.btn-outline:hover{background:var(--bg);}
+    .btn-ghost{background:transparent;border:none;color:var(--muted);}.btn-ghost:hover{color:var(--text);background:var(--bg);}
+    .btn-sm{padding:5px 10px;font-size:12px;}
+    /* KANBAN */
+    .kanban{display:flex;gap:14px;overflow-x:auto;padding-bottom:16px;align-items:flex-start;}
+    .k-col{min-width:276px;width:276px;background:#eceef6;border-radius:var(--r-lg);display:flex;flex-direction:column;max-height:calc(100vh - 200px);flex-shrink:0;border-top:3px solid transparent;}
+    .k-col-hdr{padding:12px 14px 9px;display:flex;align-items:center;gap:8px;}
+    .k-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;}
+    .k-title{font-size:11px;font-weight:800;color:var(--cinza-escuro);flex:1;text-transform:uppercase;letter-spacing:.6px;}
+    .k-cnt{background:rgba(0,0,0,.1);color:var(--muted);font-size:11px;font-weight:700;padding:1px 6px;border-radius:10px;}
+    .k-add{background:rgba(0,0,0,.08);border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);transition:all .18s;}
+    .k-add:hover{background:rgba(0,0,0,.18);color:var(--text);}
+    .k-cards{padding:6px 8px 10px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:7px;}
+    .k-empty{text-align:center;padding:24px 12px;color:var(--muted);font-size:12px;}
+    .k-empty i{display:block;font-size:22px;margin-bottom:6px;opacity:.35;}
+    /* CARD */
+    .card{background:#fff;border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh);cursor:pointer;transition:all .18s;border-left:3px solid transparent;}
+    .card:hover{box-shadow:var(--sh-md);transform:translateY(-1px);}
+    .card.s{border-left-color:var(--success);}.card.w{border-left-color:var(--warning);}.card.d{border-left-color:var(--danger);}.card.x{border-left-color:#94a3b8;}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:5px;}
+    .c-token{font-size:10px;font-weight:800;color:var(--primary);background:rgba(51,0,204,.08);padding:2px 7px;border-radius:4px;font-family:'SF Mono','Menlo',monospace;letter-spacing:.3px;}
+    .c-type{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;}
+    .c-type.lig{background:#d1fae5;color:#065f46;}.c-type.alt{background:#fef3c7;color:#92400e;}
+    .c-type.dem{background:#f3e8ff;color:#6b21a8;}
+    .d-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+    .d-badge.s{background:#d1fae5;color:#065f46;}.d-badge.w{background:#fef3c7;color:#92400e;}.d-badge.d{background:#fee2e2;color:#991b1b;}.d-badge.x{background:#f1f5f9;color:#64748b;}
+    .c-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .c-sub{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .c-foot{display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:7px;border-top:1px solid var(--border);}
+    .c-consultor{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px;flex:1;overflow:hidden;}
+    .c-consultor span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .c-attach{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px;}
+    .c-proto{font-size:10px;color:var(--muted);background:var(--bg);padding:1px 5px;border-radius:3px;font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
+    /* DASHBOARD */
+    .dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px;}
+    .stat-card{background:#fff;border-radius:var(--r-lg);padding:18px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:6px;}
+    .stat-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;margin-bottom:2px;}
+    .stat-val{font-size:30px;font-weight:900;color:var(--navy);line-height:1;}
+    .stat-lbl{font-size:12px;color:var(--muted);font-weight:500;}
+    .dash-section{margin-bottom:22px;}
+    .dash-section-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .urgent-list{display:flex;flex-direction:column;gap:8px;}
+    .urgent-item{background:#fff;border-radius:var(--r);padding:12px 14px;box-shadow:var(--sh);display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;}
+    .urgent-item:hover{box-shadow:var(--sh-md);border-left:3px solid var(--primary);padding-left:11px;}
+    .urgent-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+    .urgent-info{flex:1;min-width:0;}
+    .urgent-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .urgent-sub{font-size:11px;color:var(--muted);}
+    .dash-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    @media(max-width:700px){.dash-two{grid-template-columns:1fr;}}
+    /* MODAL */
+    .mo{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:all .2s;}
+    .mo.open{opacity:1;visibility:visible;}
+    .mo-box{background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh-lg);width:100%;max-width:700px;max-height:92vh;overflow-y:auto;transform:scale(.96);transition:transform .2s;}
+    .mo.open .mo-box{transform:scale(1);}
+    .mo-box.sm{max-width:440px;}
+    .mo-box.lg{max-width:820px;}
+    .mo-hdr{padding:18px 22px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+    .mo-hdr-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;box-shadow:0 2px 8px rgba(51,0,204,.3);}
+    .mo-title{font-size:16px;font-weight:800;flex:1;}
+    .mo-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;padding:4px;border-radius:4px;transition:all .18s;}
+    .mo-close:hover{background:var(--bg);color:var(--text);}
+    .mo-body{padding:20px 22px;}
+    .mo-footer{padding:14px 22px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+    /* FORM */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+    .form-row.r3{grid-template-columns:1fr 1fr 1fr;}
+    .form-row.r1{grid-template-columns:1fr;}
+    .form-group{display:flex;flex-direction:column;gap:5px;}
+    .form-group label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;}
+    .form-group input,.form-group select,.form-group textarea{padding:8px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;transition:border-color .18s;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(51,0,204,.1);}
+    .form-group textarea{resize:vertical;min-height:72px;}
+    .form-section{margin-bottom:18px;}
+    .form-section-title{font-size:12px;font-weight:800;color:var(--primary);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid rgba(51,0,204,.2);display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:.4px;}
+    .tipo-btns{display:flex;gap:8px;}
+    .tipo-btn{flex:1;padding:10px;border:2px solid var(--border);border-radius:8px;cursor:pointer;background:#fff;font-size:13px;font-weight:600;text-align:center;transition:all .18s;color:var(--muted);}
+    .tipo-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(51,0,204,.04);}
+    .tipo-btn.sel{border-color:var(--primary);background:rgba(51,0,204,.06);color:var(--primary);}
+    /* STAKEHOLDERS */
+    .sh-list{display:flex;flex-direction:column;gap:8px;margin-bottom:8px;}
+    .sh-item{background:var(--bg);border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:10px;}
+    .sh-info{flex:1;min-width:0;}
+    .sh-name{font-size:13px;font-weight:700;}
+    .sh-det{font-size:11px;color:var(--muted);margin-top:2px;display:flex;gap:10px;flex-wrap:wrap;}
+    .sh-det a{color:var(--primary-light);text-decoration:none;}
+    .sh-tipo{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:#e0e7ff;color:#3730a3;}
+    .sh-add-form{background:var(--bg);border-radius:var(--r);padding:12px;border:2px dashed var(--border);}
+    /* PROTOCOLS */
+    .prot-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+    .prot-item{background:var(--bg);border-radius:var(--r);padding:9px 12px;display:flex;align-items:center;gap:10px;}
+    .prot-tipo{font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;background:#fef3c7;color:#92400e;white-space:nowrap;}
+    .prot-num{font-size:12px;font-weight:700;font-family:monospace;flex:1;}
+    .prot-date{font-size:11px;color:var(--muted);}
+    /* ATTACHMENTS */
+    .att-drop{border:2px dashed var(--border);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer;transition:all .18s;background:#fafbfc;}
+    .att-drop:hover,.att-drop.drag{border-color:var(--primary-light);background:#eff6ff;}
+    .att-drop i{font-size:22px;color:var(--muted);display:block;margin-bottom:6px;}
+    .att-drop p{font-size:13px;color:var(--muted);}
+    .att-drop input[type=file]{display:none;}
+    .att-list{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+    .att-item{background:var(--bg);border-radius:6px;padding:8px 11px;display:flex;align-items:center;gap:8px;}
+    .att-icon{width:30px;height:30px;border-radius:6px;background:#e0e7ff;color:#3730a3;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+    .att-info{flex:1;min-width:0;}
+    .att-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .att-size{font-size:11px;color:var(--muted);}
+    .att-del{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;padding:3px;border-radius:4px;}
+    .att-del:hover{color:var(--danger);background:#fee2e2;}
+    /* STAGE TIMELINE */
+    .stage-timeline{display:flex;align-items:center;gap:0;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;}
+    .st-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:60px;}
+    .st-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;position:relative;z-index:1;transition:all .18s;}
+    .st-dot.done{opacity:.9;}.st-dot.active{box-shadow:0 0 0 4px rgba(99,102,241,.25);}.st-dot.future{background:#e2e8f0 !important;color:var(--muted);}
+    .st-lbl{font-size:10px;font-weight:600;text-align:center;color:var(--muted);line-height:1.2;max-width:70px;}
+    .st-lbl.active{color:var(--text);font-weight:800;}
+    .st-line{flex:1;height:2px;background:var(--border);margin-bottom:16px;min-width:8px;}
+    .st-line.done-line{background:var(--success);}
+    /* STAGE HISTORY */
+    .hist-item{padding:12px 14px;background:var(--bg);border-radius:var(--r);margin-bottom:8px;}
+    .hist-hdr{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+    .hist-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;}
+    .hist-stage{font-size:13px;font-weight:700;}
+    .hist-date{font-size:11px;color:var(--muted);margin-left:auto;}
+    .hist-proto{font-size:11px;color:var(--muted);font-family:monospace;background:#fff;padding:2px 7px;border-radius:4px;border:1px solid var(--border);display:inline-block;margin-top:3px;}
+    .hist-notes{font-size:12px;color:var(--muted);margin-top:5px;}
+    /* DETAIL INFO */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+    .info-item label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:block;margin-bottom:3px;}
+    .info-item span{font-size:13px;font-weight:600;color:var(--text);}
+    .info-item.full{grid-column:1/-1;}
+    /* CLIENT BOX */
+    .client-box{background:rgba(51,0,204,.04);border:1px solid rgba(51,0,204,.15);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;}
+    .client-box-title{font-size:11px;font-weight:800;color:var(--primary);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+    .client-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;}
+    .client-field label{font-size:10px;color:var(--primary);font-weight:700;text-transform:uppercase;}
+    .client-field span{font-size:13px;font-weight:600;color:var(--text);}
+    /* MISC */
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;}
+    .b-primary{background:rgba(51,0,204,.08);color:var(--primary);}
+    .b-success{background:#d1fae5;color:#065f46;}
+    .divider{height:1px;background:var(--border);margin:16px 0;}
+    .alert{padding:10px 14px;border-radius:var(--r);font-size:13px;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+    .alert-info{background:rgba(51,0,204,.06);color:var(--primary);border:1px solid rgba(51,0,204,.2);}
+    .alert-warning{background:#fef3c7;color:#92400e;border:1px solid #fde68a;}
+    .tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:16px;}
+    .tab-btn{padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .18s;}
+    .tab-btn:hover{color:var(--text);}
+    .tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:700;}
+    .tab-pane{display:none;}.tab-pane.active{display:block;}
+    .empty-state{text-align:center;padding:30px;color:var(--muted);}
+    .empty-state i{font-size:30px;opacity:.25;display:block;margin-bottom:8px;}
+    .aneel-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:rgba(184,134,11,.12);color:var(--dourado);border:1px solid rgba(184,134,11,.3);padding:3px 8px;border-radius:4px;}
+    ::-webkit-scrollbar{width:6px;height:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr;}.form-row.r3{grid-template-columns:1fr 1fr;}.main{padding:14px;}.kanban{gap:10px;}.k-col{min-width:240px;width:240px;}}
+
+    /* ── FILE CONNECTION BADGE ── */
+    .conn-wrap{position:relative;}
+    .conn-badge{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.3);transition:all .2s;white-space:nowrap;}
+    .conn-badge.connected{background:rgba(16,185,129,.2);border-color:#10b981;color:#6ee7b7;}
+    .conn-badge.disconnected{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.5);color:#fca5a5;}
+    .conn-badge.syncing{background:rgba(251,191,36,.15);border-color:#fbbf24;color:#fde68a;}
+    .conn-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0;}
+    .conn-badge.syncing .conn-dot{animation:spin .8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .file-menu{position:absolute;right:0;top:calc(100% + 8px);background:#1e293b;border:1px solid #334155;border-radius:8px;padding:6px;min-width:210px;box-shadow:0 8px 24px rgba(0,0,0,.4);display:none;z-index:300;}
+    .file-menu.open{display:block;}
+    .fm-item{padding:8px 12px;border-radius:6px;font-size:12px;font-weight:600;color:#e2e8f0;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s;}
+    .fm-item:hover{background:#334155;}
+    .fm-item i{width:14px;text-align:center;color:#94a3b8;}
+    .fm-divider{height:1px;background:#334155;margin:4px 0;}
+    .fm-tip{padding:6px 12px;font-size:10px;color:#64748b;line-height:1.4;}
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;}
+    #login-screen.hidden{display:none;}
+    .login-box{background:#fff;border-radius:16px;padding:44px 40px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+    .login-logo{display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;}
+    .login-logo-badge{background:var(--primary);color:#fff;font-size:13px;font-weight:900;letter-spacing:.5px;padding:5px 11px;border-radius:6px;}
+    .login-logo-name{font-size:14px;font-weight:800;color:var(--navy);}
+    .login-title{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+    .login-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
+    .login-input-wrap{position:relative;margin-bottom:16px;}
+    .login-input{width:100%;padding:13px 44px 13px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;transition:border-color .18s;outline:none;box-sizing:border-box;}
+    .login-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(51,0,204,.1);}
+    .login-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;}
+    .login-btn{width:100%;background:var(--primary);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer;transition:background .18s;letter-spacing:.2px;}
+    .login-btn:hover{background:var(--primary-dark);}
+    .login-error{color:var(--danger);font-size:12px;font-weight:600;margin-top:10px;min-height:18px;}
+    .login-footer{font-size:11px;color:var(--muted);margin-top:24px;}
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <span class="login-logo-badge">GDD</span>
+      <span class="login-logo-name">BESCO Energia</span>
+    </div>
+    <h2 class="login-title">Acesso restrito</h2>
+    <p class="login-sub">Gestão de Demandas das Distribuidoras</p>
+    <div class="login-input-wrap">
+      <input type="password" id="login-pwd" class="login-input" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="login-toggle" onclick="togglePwd()" tabindex="-1"><i class="fa-solid fa-eye" id="eye-icon"></i></button>
+    </div>
+    <button class="login-btn" onclick="doLogin()"><i class="fa-solid fa-unlock-keyhole"></i> &nbsp;Entrar</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-footer">BESCO Energia &nbsp;·&nbsp; Uso interno</div>
+  </div>
+</div>
+
+
+<header class="hdr">
+  <div class="hdr-logo">
+    <span class="hdr-logo-badge">GDD</span>
+    <div class="hdr-logo-text">
+      <span class="hdr-logo-name">Gestão de Demandas</span>
+      <span class="hdr-logo-sub">BESCO Energia · Distribuidoras</span>
+    </div>
+  </div>
+  <nav class="hdr-nav">
+    <button class="nav-btn" id="nav-dashboard" onclick="switchView('dashboard')"><i class="fa-solid fa-gauge-high"></i> Dashboard</button>
+    <button class="nav-btn active" id="nav-kanban" onclick="switchView('kanban')"><i class="fa-solid fa-table-columns"></i> Ligações &amp; Alterações</button>
+    <button class="nav-btn" id="nav-demandas" onclick="switchView('demandas')"><i class="fa-solid fa-list-check"></i> Outras Demandas</button>
+  </nav>
+  <div class="hdr-actions">
+    <button class="btn-ico" onclick="exportData()" title="Exportar dados"><i class="fa-solid fa-file-export"></i></button>
+    <button class="btn-ico" onclick="document.getElementById('import-file').click()" title="Importar dados"><i class="fa-solid fa-file-import"></i></button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+  <div class="conn-wrap">
+    <div id="conn-badge" class="conn-badge disconnected" onclick="toggleFileMenu()" title="Gerenciar arquivo de dados compartilhado">
+      <span class="conn-dot"></span>
+      <span id="conn-label">Configure GitHub</span>
+      <i class="fa-solid fa-chevron-down" style="font-size:9px;margin-left:2px;"></i>
+    </div>
+    <div id="file-menu" class="file-menu">
+      <div class="fm-item" onclick="document.getElementById('file-menu').classList.remove('open');ghRead()"><i class="fa-solid fa-rotate"></i> Atualizar agora</div>
+      <div class="fm-item" onclick="showGhConfig()"><i class="fa-brands fa-github"></i> Configurar GitHub</div>
+      <div class="fm-divider"></div>
+      <div class="fm-item" onclick="document.getElementById('file-menu').classList.remove('open');stopAutoRefresh();localStorage.removeItem('ddd_gh_token');ghFileSha=null;setConnStatus('disconnected','Token removido')"><i class="fa-solid fa-link-slash"></i> Remover token</div>
+      <div class="fm-divider"></div>
+      <div class="fm-tip">&#128161; Dados salvos no GitHub. Todos os usuários veem os mesmos dados em tempo real.</div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- DASHBOARD -->
+<div id="view-dashboard" class="view">
+  <div class="toolbar"><div class="toolbar-title"><i class="fa-solid fa-gauge-high" style="color:var(--primary);margin-right:6px"></i>Dashboard</div></div>
+  <div class="dash-grid" id="dash-stats"></div>
+  <div class="dash-two">
+    <div class="dash-section">
+      <div class="dash-section-title"><i class="fa-solid fa-fire" style="color:var(--danger)"></i> Ligações &amp; Alterações Críticas</div>
+      <div class="urgent-list" id="dash-urgent"></div>
+    </div>
+    <div class="dash-section">
+      <div class="dash-section-title"><i class="fa-solid fa-clock" style="color:var(--warning)"></i> Demandas em Aberto</div>
+      <div class="urgent-list" id="dash-dem-urgent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- KANBAN (Ligações & Alterações) -->
+<div id="view-kanban" class="view active">
+  <div class="toolbar">
+    <div class="toolbar-title"><i class="fa-solid fa-table-columns" style="color:var(--primary);margin-right:6px"></i>Ligações &amp; Alterações</div>
+    <div class="toolbar-spacer"></div>
+    <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Buscar..." id="k-search" oninput="renderKanban()"></div>
+    <select class="fsel" id="k-dist" onchange="renderKanban()"><option value="">Todas as distribuidoras</option></select>
+    <select class="fsel" id="k-tipo" onchange="renderKanban()">
+      <option value="">Todos os tipos</option>
+      <option value="nova_ligacao">Nova Ligação</option>
+      <option value="alteracao_carga">Alteração de Carga</option>
+    </select>
+    <button class="btn btn-primary" onclick="openLigacaoModal()"><i class="fa-solid fa-plus"></i> Nova Solicitação</button>
+  </div>
+  <div class="kanban" id="kanban-board"></div>
+</div>
+
+<!-- DEMANDAS (Kanban) -->
+<div id="view-demandas" class="view">
+  <div class="toolbar">
+    <div class="toolbar-title"><i class="fa-solid fa-list-check" style="color:var(--primary);margin-right:6px"></i>Outras Demandas</div>
+    <div class="toolbar-spacer"></div>
+    <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Buscar..." id="d-search" oninput="renderDemandas()"></div>
+    <select class="fsel" id="d-dist" onchange="renderDemandas()"><option value="">Todas as distribuidoras</option></select>
+    <select class="fsel" id="d-tipo" onchange="renderDemandas()">
+      <option value="">Todos os tipos</option>
+      <option value="memoria_massa">Memória de Massa</option>
+      <option value="dic_fic">DIC / FIC</option>
+      <option value="alteracao_demanda">Alteração de Demanda</option>
+      <option value="mudanca_tarifaria">Mudança Tarifária</option>
+      <option value="cobranca_indevida">Cobrança Indevida - Med. ou Contratual</option>
+      <option value="vistoria_concessionaria">Vistoria Concessionária</option>
+      <option value="informacoes_carga">Informações de Carga</option>
+      <option value="outro">Outro</option>
+    </select>
+    <div class="days-toggle">
+      <button class="dtb active" id="dtb-corrido" onclick="setDaysMode('corrido')">Dias Corridos</button>
+      <button class="dtb" id="dtb-util" onclick="setDaysMode('util')">Dias Úteis</button>
+    </div>
+    <button class="btn btn-primary" onclick="openDemandaModal()"><i class="fa-solid fa-plus"></i> Nova Demanda</button>
+  </div>
+  <div class="kanban" id="dem-kanban-board"></div>
+</div>
+
+</main>
+
+<!-- ═══════ MODAL: LIGAÇÃO / ALTERAÇÃO ═══════ -->
+<div class="mo" id="mo-lig">
+<div class="mo-box">
+  <div class="mo-hdr">
+    <div class="mo-hdr-icon" style="background:var(--primary)"><i class="fa-solid fa-plug"></i></div>
+    <div class="mo-title" id="mo-lig-title">Nova Solicitação</div>
+    <button class="mo-close" onclick="closeModal('mo-lig')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('mo-lig','t-ident')">Identificação</button>
+      <button class="tab-btn" onclick="switchTab('mo-lig','t-cliente')">Cliente</button>
+      <button class="tab-btn" onclick="switchTab('mo-lig','t-contatos')">Contatos</button>
+      <button class="tab-btn" onclick="switchTab('mo-lig','t-anexos')">Anexos</button>
+    </div>
+    <!-- Tab Identificação -->
+    <div class="tab-pane active" id="t-ident">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-tag"></i> Tipo de Solicitação</div>
+        <div class="tipo-btns">
+          <button type="button" class="tipo-btn sel" id="tbtn-lig" onclick="setTipo('nova_ligacao')"><i class="fa-solid fa-plug"></i><br>Nova Ligação</button>
+          <button type="button" class="tipo-btn" id="tbtn-alt" onclick="setTipo('alteracao_carga')"><i class="fa-solid fa-sliders"></i><br>Alteração de Carga</button>
+        </div>
+        <input type="hidden" id="f-tipo" value="nova_ligacao">
+      </div>
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-info-circle"></i> Dados da Solicitação</div>
+        <div class="form-row r1"><div class="form-group"><label>Descrição / Identificação *</label><input type="text" id="f-titulo" placeholder="Ex: Novo ponto comercial – UC 1234567"></div></div>
+        <div class="form-row">
+          <div class="form-group"><label>Unidade Consumidora (UC)</label><input type="text" id="f-uc" placeholder="Nº da UC ou endereço"></div>
+          <div class="form-group"><label>Distribuidora *</label><input type="text" id="f-dist" list="dl-dist" placeholder="Selecione ou digite..." required><datalist id="dl-dist"></datalist></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Data do E-mail Enviado *</label><input type="date" id="f-email-date"></div>
+          <div class="form-group"><label>Carga Solicitada (kVA)</label><input type="text" id="f-carga" placeholder="Ex: 112,5 kVA"></div>
+        </div>
+        <div class="form-row r1"><div class="form-group"><label>Observações Gerais</label><textarea id="f-notes" placeholder="Informações adicionais relevantes..."></textarea></div></div>
+      </div>
+    </div>
+    <!-- Tab Cliente -->
+    <div class="tab-pane" id="t-cliente">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-building-user"></i> Dados do Cliente</div>
+        <div class="form-row">
+          <div class="form-group"><label>Nome / Razão Social *</label><input type="text" id="fc-nome" placeholder="Nome do cliente ou empresa"></div>
+          <div class="form-group"><label>CPF / CNPJ</label><input type="text" id="fc-doc" placeholder="000.000.000-00 ou 00.000.000/0001-00"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Responsável / Contato</label><input type="text" id="fc-responsavel" placeholder="Nome do responsável"></div>
+          <div class="form-group"><label>Telefone</label><input type="text" id="fc-tel" placeholder="(00) 00000-0000"></div>
+        </div>
+        <div class="form-row r1">
+          <div class="form-group"><label>E-mail</label><input type="email" id="fc-email" placeholder="email@cliente.com.br"></div>
+        </div>
+        <div class="form-row r1">
+          <div class="form-group"><label>Observações do Cliente</label><textarea id="fc-obs" placeholder="Particularidades, histórico de atendimento, urgências..."></textarea></div>
+        </div>
+      </div>
+    </div>
+    <!-- Tab Contatos -->
+    <div class="tab-pane" id="t-contatos">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-building"></i> Consultor na Concessionária</div>
+        <div class="form-row r3">
+          <div class="form-group"><label>Nome</label><input type="text" id="f-c-nome" placeholder="Nome do consultor"></div>
+          <div class="form-group"><label>Telefone</label><input type="text" id="f-c-tel" placeholder="(00) 00000-0000"></div>
+          <div class="form-group"><label>E-mail</label><input type="email" id="f-c-email" placeholder="email@concessionaria.com.br"></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-users"></i> Stakeholders (Projetista, Engenheiro, etc.)</div>
+        <div class="sh-list" id="lig-sh-list"></div>
+        <div class="sh-add-form">
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase">Adicionar Contato</div>
+          <div class="form-row">
+            <div class="form-group"><label>Nome *</label><input type="text" id="sh-nome" placeholder="Nome completo"></div>
+            <div class="form-group"><label>Tipo *</label><select id="sh-tipo"><option value="Cliente">Cliente</option><option value="Projetista">Projetista</option><option value="Engenheiro">Engenheiro</option><option value="Consultor">Consultor</option><option value="Outro">Outro</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Telefone</label><input type="text" id="sh-tel"></div>
+            <div class="form-group"><label>E-mail</label><input type="email" id="sh-email"></div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="addStakeholder('lig')"><i class="fa-solid fa-plus"></i> Adicionar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tab Anexos -->
+    <div class="tab-pane" id="t-anexos">
+      <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i> Anexe e-mails salvos em PDF/EML, plantas, projetos e documentos relacionados.</div>
+      <div class="att-drop" id="lig-att-drop" onclick="document.getElementById('lig-att-input').click()" ondragover="dragOver(event,'lig-att-drop')" ondragleave="dragLeave(event,'lig-att-drop')" ondrop="dropFile(event,'lig')">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p>Clique ou arraste arquivos aqui<br><small>PDF, DOC, XLS, JPG, PNG, EML — máx. 5MB por arquivo</small></p>
+        <input type="file" id="lig-att-input" multiple onchange="addAttachments(event,'lig')">
+      </div>
+      <div class="att-list" id="lig-att-list"></div>
+    </div>
+  </div>
+  <div class="mo-footer">
+    <button class="btn btn-outline" onclick="closeModal('mo-lig')">Cancelar</button>
+    <button class="btn btn-primary" onclick="saveLigacao()"><i class="fa-solid fa-floppy-disk"></i> Salvar Solicitação</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ MODAL: DEMANDA ═══════ -->
+<div class="mo" id="mo-dem">
+<div class="mo-box">
+  <div class="mo-hdr">
+    <div class="mo-hdr-icon" style="background:var(--violet)"><i class="fa-solid fa-list-check"></i></div>
+    <div class="mo-title" id="mo-dem-title">Nova Demanda</div>
+    <button class="mo-close" onclick="closeModal('mo-dem')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('mo-dem','dt-ident')">Identificação</button>
+      <button class="tab-btn" onclick="switchTab('mo-dem','dt-proto')">Protocolos</button>
+      <button class="tab-btn" onclick="switchTab('mo-dem','dt-contatos')">Contatos</button>
+      <button class="tab-btn" onclick="switchTab('mo-dem','dt-anexos')">Anexos</button>
+    </div>
+    <!-- Tab Identificação -->
+    <div class="tab-pane active" id="dt-ident">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-info-circle"></i> Dados da Demanda</div>
+        <div class="form-row">
+          <div class="form-group"><label>Tipo de Demanda *</label>
+            <select id="df-tipo">
+              <option value="memoria_massa">Memória de Massa</option>
+              <option value="dic_fic">DIC / FIC</option>
+              <option value="alteracao_demanda">Alteração de Demanda</option>
+              <option value="mudanca_tarifaria">Mudança Tarifária</option>
+              <option value="cobranca_indevida">Cobrança Indevida - Med. ou Contratual</option>
+              <option value="vistoria_concessionaria">Vistoria Concessionária (Tensão, Rede)</option>
+              <option value="informacoes_carga">Informações de Carga</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Distribuidora *</label><input type="text" id="df-dist" list="dl-dist2" placeholder="Selecione ou digite..." required><datalist id="dl-dist2"></datalist></div>
+        </div>
+        <div class="form-row r1"><div class="form-group"><label>Descrição / Identificação *</label><input type="text" id="df-titulo" placeholder="Ex: Solicitar memória de massa para UC 1234567"></div></div>
+        <div class="form-row">
+          <div class="form-group"><label>Unidade Consumidora (UC)</label><input type="text" id="df-uc" placeholder="Nº da UC ou endereço"></div>
+          <div class="form-group"><label>Data do E-mail Enviado *</label><input type="date" id="df-email-date"></div>
+        </div>
+        <div class="form-row r1"><div class="form-group"><label>Observações</label><textarea id="df-notes" placeholder="Detalhes, histórico, pendências..."></textarea></div></div>
+      </div>
+    </div>
+    <!-- Tab Protocolos -->
+    <div class="tab-pane" id="dt-proto">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-hashtag"></i> Protocolos Registrados</div>
+        <div class="prot-list" id="dem-prot-list"></div>
+        <div class="sh-add-form">
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase">Adicionar Protocolo</div>
+          <div class="form-row">
+            <div class="form-group"><label>Tipo *</label>
+              <select id="prot-tipo">
+                <option value="Reclamação Distribuidora">Reclamação Distribuidora</option>
+                <option value="Reclamação Ouvidoria">Reclamação Ouvidoria</option>
+                <option value="Reclamação ANEEL">Reclamação ANEEL</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Número do Protocolo *</label><input type="text" id="prot-num" placeholder="Nº do protocolo"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Data</label><input type="date" id="prot-date"></div>
+            <div class="form-group"><label>Observação</label><input type="text" id="prot-obs" placeholder="Opcional"></div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="addProtocol()"><i class="fa-solid fa-plus"></i> Adicionar Protocolo</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tab Contatos -->
+    <div class="tab-pane" id="dt-contatos">
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-building"></i> Consultor na Concessionária</div>
+        <div class="form-row r3">
+          <div class="form-group"><label>Nome</label><input type="text" id="dfc-nome" placeholder="Nome do consultor"></div>
+          <div class="form-group"><label>Telefone</label><input type="text" id="dfc-tel"></div>
+          <div class="form-group"><label>E-mail</label><input type="email" id="dfc-email"></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title"><i class="fa-solid fa-users"></i> Stakeholders</div>
+        <div class="sh-list" id="dem-sh-list"></div>
+        <div class="sh-add-form">
+          <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase">Adicionar Contato</div>
+          <div class="form-row">
+            <div class="form-group"><label>Nome *</label><input type="text" id="dsh-nome"></div>
+            <div class="form-group"><label>Tipo *</label><select id="dsh-tipo"><option value="Cliente">Cliente</option><option value="Projetista">Projetista</option><option value="Engenheiro">Engenheiro</option><option value="Consultor">Consultor</option><option value="Outro">Outro</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Telefone</label><input type="text" id="dsh-tel"></div>
+            <div class="form-group"><label>E-mail</label><input type="email" id="dsh-email"></div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="addStakeholder('dem')"><i class="fa-solid fa-plus"></i> Adicionar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Tab Anexos -->
+    <div class="tab-pane" id="dt-anexos">
+      <div class="att-drop" id="dem-att-drop" onclick="document.getElementById('dem-att-input').click()" ondragover="dragOver(event,'dem-att-drop')" ondragleave="dragLeave(event,'dem-att-drop')" ondrop="dropFile(event,'dem')">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p>Clique ou arraste arquivos aqui</p>
+        <input type="file" id="dem-att-input" multiple onchange="addAttachments(event,'dem')">
+      </div>
+      <div class="att-list" id="dem-att-list"></div>
+    </div>
+  </div>
+  <div class="mo-footer">
+    <button class="btn btn-outline" onclick="closeModal('mo-dem')">Cancelar</button>
+    <button class="btn btn-primary" onclick="saveDemanda()"><i class="fa-solid fa-floppy-disk"></i> Salvar Demanda</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ MODAL: DETAIL ═══════ -->
+<div class="mo" id="mo-detail">
+<div class="mo-box lg">
+  <div class="mo-hdr" id="detail-hdr">
+    <div class="mo-hdr-icon" id="detail-icon" style="background:var(--primary)"><i class="fa-solid fa-plug"></i></div>
+    <div>
+      <div class="mo-title" id="detail-titulo">—</div>
+      <div style="display:flex;gap:8px;margin-top:3px;flex-wrap:wrap" id="detail-badges"></div>
+    </div>
+    <button class="mo-close" onclick="closeModal('mo-detail')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body">
+    <div id="detail-timeline" style="display:none"></div>
+    <div id="detail-days-alert" style="display:none"></div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('mo-detail','det-info')">Informações</button>
+      <button class="tab-btn" onclick="switchTab('mo-detail','det-hist')">Histórico</button>
+      <button class="tab-btn" onclick="switchTab('mo-detail','det-cont')">Contatos</button>
+      <button class="tab-btn" onclick="switchTab('mo-detail','det-att')">Anexos</button>
+    </div>
+    <div class="tab-pane active" id="det-info"><div class="info-grid" id="det-info-grid"></div><div class="divider"></div><div id="det-notes-wrap" style="display:none"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase">Observações</div><div id="det-notes" style="font-size:13px;color:var(--text);line-height:1.5;white-space:pre-wrap"></div></div></div>
+    <div class="tab-pane" id="det-hist"><div id="det-hist-content"></div></div>
+    <div class="tab-pane" id="det-cont"><div id="det-cont-content"></div></div>
+    <div class="tab-pane" id="det-att"><div id="det-att-content"></div></div>
+  </div>
+  <div class="mo-footer" id="detail-footer"></div>
+</div>
+</div>
+
+<!-- ═══════ MODAL: AVANÇAR ETAPA ═══════ -->
+<div class="mo" id="mo-avancar">
+<div class="mo-box sm">
+  <div class="mo-hdr">
+    <div class="mo-hdr-icon" style="background:var(--success)"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="mo-title" id="av-title">Avançar Etapa</div>
+    <button class="mo-close" onclick="closeModal('mo-avancar')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body">
+    <div class="alert alert-info" id="av-info"></div>
+    <div id="av-proto-group" class="form-group" style="margin-bottom:14px;display:none">
+      <label>Protocolo da Concessionária *</label>
+      <input type="text" id="av-proto" placeholder="Nº do protocolo recebido">
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Data</label><input type="date" id="av-date"></div>
+    </div>
+    <div class="form-group"><label>Notas desta etapa</label><textarea id="av-notes" style="min-height:60px" placeholder="Informações relevantes..."></textarea></div>
+  </div>
+  <div class="mo-footer">
+    <button class="btn btn-outline" onclick="closeModal('mo-avancar')">Cancelar</button>
+    <button class="btn btn-success" id="av-confirm-btn" onclick="confirmAvancar()"><i class="fa-solid fa-arrow-right"></i> Confirmar Avanço</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ MODAL: CONFIRM ═══════ -->
+<div class="mo" id="mo-confirm">
+<div class="mo-box sm">
+  <div class="mo-hdr">
+    <div class="mo-hdr-icon" style="background:var(--danger)"><i class="fa-solid fa-triangle-exclamation"></i></div>
+    <div class="mo-title" id="conf-title">Confirmar Ação</div>
+    <button class="mo-close" onclick="closeModal('mo-confirm')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body"><p id="conf-msg" style="font-size:14px;color:var(--text)"></p></div>
+  <div class="mo-footer">
+    <button class="btn btn-outline" onclick="closeModal('mo-confirm')">Cancelar</button>
+    <button class="btn btn-danger" onclick="confirmAction()"><i class="fa-solid fa-check"></i> Confirmar</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ MODAL: GITHUB CONFIG ═══════ -->
+<div class="mo" id="mo-gh-config">
+<div class="mo-box" style="max-width:460px">
+  <div class="mo-hdr">
+    <div class="mo-hdr-icon" style="background:#24292e"><i class="fa-brands fa-github"></i></div>
+    <div class="mo-title">Configurar GitHub</div>
+    <button class="mo-close" onclick="closeModal('mo-gh-config')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="mo-body">
+    <div class="form-group" style="margin-bottom:16px">
+      <label>Personal Access Token</label>
+      <input type="password" id="gh-token-inp" placeholder="ghp_..." style="padding:8px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;width:100%">
+      <span style="font-size:11px;color:var(--muted);margin-top:4px;display:block">O token fica salvo apenas no seu navegador. Nunca é compartilhado.</span>
+    </div>
+    <div style="background:rgba(51,0,204,.04);border:1px solid rgba(51,0,204,.15);border-radius:8px;padding:12px;font-size:12px;color:var(--muted)">
+      <strong style="color:var(--primary)">Repositório:</strong> rodrigotravi/Besco<br>
+      <strong style="color:var(--primary)">Arquivo de dados:</strong> dados-gestao.json
+    </div>
+  </div>
+  <div class="mo-footer">
+    <button class="btn btn-outline" onclick="closeModal('mo-gh-config')">Cancelar</button>
+    <button class="btn btn-primary" onclick="saveGhConfig()"><i class="fa-brands fa-github"></i> Salvar e conectar</button>
+  </div>
+</div>
+</div>
+
+<script>
+'use strict';
+
+// ── CONSTANTS ──
+const STAGES = [
+  {id:0,name:'Email Enviado',       short:'E-mail',     color:'#6366f1',icon:'fa-envelope',         hasProto:false},
+  {id:1,name:'Análise de Projeto',  short:'Análise',    color:'#0284c7',icon:'fa-file-lines',        hasProto:true},
+  {id:2,name:'Viabilidade de Rede', short:'Viabilidade',color:'#f59e0b',icon:'fa-tower-broadcast',   hasProto:true},
+  {id:3,name:'Estudo de Rede (Obra)',short:'Estudo',    color:'#ea580c',icon:'fa-helmet-safety',     hasProto:true},
+  {id:4,name:'Nota de Ligação',     short:'Nota Lig.',  color:'#7c3aed',icon:'fa-plug-circle-check', hasProto:true},
+  {id:5,name:'Finalizado',          short:'Concluído',  color:'#10b981',icon:'fa-circle-check',      hasProto:false},
+];
+
+const DEM_STAGES = [
+  {id:0,name:'Demanda Criada',          short:'Criada',   color:'#6366f1',icon:'fa-file-plus'},
+  {id:1,name:'Resposta Concessionária', short:'Resposta', color:'#0284c7',icon:'fa-reply'},
+  {id:2,name:'Nova Ação Nossa',         short:'Ação',     color:'#f59e0b',icon:'fa-bolt'},
+  {id:3,name:'Problema Resolvido',      short:'Resolvido',color:'#10b981',icon:'fa-circle-check'},
+];
+
+const DEMAND_TYPES = {
+  memoria_massa:         'Memória de Massa',
+  dic_fic:               'DIC / FIC',
+  alteracao_demanda:     'Alteração de Demanda',
+  mudanca_tarifaria:     'Mudança Tarifária',
+  cobranca_indevida:     'Cobrança Indevida - Med. ou Contratual',
+  vistoria_concessionaria:'Vistoria Concessionária (Tensão, Rede)',
+  informacoes_carga:     'Informações de Carga',
+  outro:                 'Outro',
+};
+
+const PROTOCOL_TYPES = ['Reclamação Distribuidora','Reclamação Ouvidoria','Reclamação ANEEL'];
+
+const DISTRIBUIDORAS = [
+  'Coelba / Neoenergia Bahia','Celpe / Neoenergia Pernambuco','Elektro / Neoenergia SP',
+  'Coelce / Enel Ceará','Enel Distribuição São Paulo','Enel Distribuição Rio',
+  'Cemig Distribuição','CPFL Paulista','CPFL Piratininga','CPFL Santa Cruz',
+  'Energisa Mato Grosso','Energisa Mato Grosso do Sul','Energisa Tocantins',
+  'Energisa Paraíba','Energisa Sergipe','Energisa Minas Gerais','Energisa Rondônia',
+  'Equatorial Maranhão','Equatorial Pará','Equatorial Piauí','Equatorial Alagoas',
+  'Equatorial Goiás','Light','Copel Distribuição','CELESC Distribuição',
+  'CEB Distribuição','Amazonas Energia','Boa Vista Energia',
+];
+
+// ── STATE ──
+let ligacoes = [];
+let demandas = [];
+let editingLigId = null;
+let editingDemId = null;
+let avancandoId = null;
+let avancandoType = null; // 'lig' | 'dem'
+let confirmCb = null;
+let daysMode = 'corrido'; // 'corrido' | 'util'
+let tmpLigSH = [], tmpDemSH = [], tmpLigAtt = [], tmpDemAtt = [], tmpDemProto = [];
+let detailId = null, detailType = null;
+
+// ── GITHUB API INTEGRATION ──
+const GH_OWNER = 'rodrigotravi';
+const GH_REPO  = 'besco';
+const GH_FILE  = 'dados-gestao.json';
+let ghFileSha = null;
+let autoRefreshTimer = null;
+
+function getGhToken(){ return localStorage.getItem('ddd_gh_token') || ''; }
+
+async function ghRead(){
+  const token = getGhToken();
+  if(!token){ setConnStatus('disconnected','Configure GitHub'); return; }
+  setConnStatus('syncing','Sincronizando...');
+  try{
+    const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?t=${Date.now()}`,{
+      headers:{ Authorization:`Bearer ${token}`, Accept:'application/vnd.github.v3+json', 'Cache-Control':'no-cache' }
+    });
+    if(r.status===404){ ghFileSha=null; setConnStatus('connected','GitHub · Pronto'); return; }
+    if(!r.ok){ const e=await r.json(); throw new Error(e.message||`HTTP ${r.status}`); }
+    const json=await r.json();
+    ghFileSha=json.sha;
+    const text=decodeURIComponent(escape(atob(json.content.replace(/\s/g,''))));
+    const data=JSON.parse(text);
+    ligacoes=data.ligacoes||[]; demandas=data.demandas||[];
+    migrateData(); renderAll();
+    setConnStatus('connected','GitHub · Sincronizado');
+  }catch(e){ console.error('ghRead:',e); setConnStatus('disconnected','Erro: '+e.message.slice(0,30)); }
+}
+
+async function ghWrite(){
+  const token=getGhToken();
+  if(!token){
+    localStorage.setItem('ge_ligacoes',JSON.stringify(ligacoes));
+    localStorage.setItem('ge_demandas',JSON.stringify(demandas));
+    return;
+  }
+  setConnStatus('syncing','Salvando...');
+  try{
+    const payload=JSON.stringify({version:2,updatedAt:new Date().toISOString(),ligacoes,demandas},null,2);
+    const content=btoa(unescape(encodeURIComponent(payload)));
+    const body={message:`GDD: atualização ${new Date().toLocaleString('pt-BR')}`,content};
+    if(ghFileSha) body.sha=ghFileSha;
+    const r=await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,{
+      method:'PUT',
+      headers:{ Authorization:`Bearer ${token}`, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' },
+      body:JSON.stringify(body)
+    });
+    if(!r.ok){ const e=await r.json(); throw new Error(e.message||`HTTP ${r.status}`); }
+    const result=await r.json();
+    ghFileSha=result.content.sha;
+    setConnStatus('connected','GitHub · Salvo ✓');
+    setTimeout(()=>setConnStatus('connected','GitHub · Conectado'),2500);
+  }catch(e){
+    console.error('ghWrite:',e);
+    setConnStatus('disconnected','Erro ao salvar');
+    localStorage.setItem('ge_ligacoes',JSON.stringify(ligacoes));
+    localStorage.setItem('ge_demandas',JSON.stringify(demandas));
+    alert('Erro ao salvar no GitHub:\n'+e.message+'\n\nBackup salvo localmente.');
+  }
+}
+
+// ── GitHub Config Modal ──
+function showGhConfig(){
+  document.getElementById('file-menu').classList.remove('open');
+  document.getElementById('gh-token-inp').value=getGhToken();
+  openModal('mo-gh-config');
+}
+function saveGhConfig(){
+  const token=document.getElementById('gh-token-inp').value.trim();
+  if(!token){ alert('Informe o token.'); return; }
+  localStorage.setItem('ddd_gh_token',token);
+  closeModal('mo-gh-config');
+  ghRead().then(()=>startAutoRefresh());
+}
+
+function toggleFileMenu(){
+  const m=document.getElementById('file-menu');
+  m.classList.toggle('open');
+  if(m.classList.contains('open')){
+    setTimeout(()=>document.addEventListener('click',closeFileMenuOutside,{once:true}),10);
+  }
+}
+function closeFileMenuOutside(e){
+  const wrap=document.querySelector('.conn-wrap');
+  if(!wrap.contains(e.target)) document.getElementById('file-menu').classList.remove('open');
+}
+
+function setConnStatus(status,label){
+  const b=document.getElementById('conn-badge');
+  const l=document.getElementById('conn-label');
+  b.className='conn-badge '+status;
+  l.textContent=label;
+}
+
+async function ghInit(){
+  const token=getGhToken();
+  if(token){ await ghRead(); startAutoRefresh(); }
+  else { setConnStatus('disconnected','Configure GitHub'); }
+}
+
+function startAutoRefresh(){
+  stopAutoRefresh();
+  autoRefreshTimer=setInterval(()=>ghRead(),30000);
+}
+function stopAutoRefresh(){ if(autoRefreshTimer){clearInterval(autoRefreshTimer);autoRefreshTimer=null;} }
+
+function renderAll(){ renderDashboard(); renderKanban(); renderDemandas(); populateDatalist(); }
+
+// ── STORAGE ──
+function loadData(){
+  try{ ligacoes=JSON.parse(localStorage.getItem('ge_ligacoes')||'[]'); }catch(e){ ligacoes=[]; }
+  try{ demandas=JSON.parse(localStorage.getItem('ge_demandas')||'[]'); }catch(e){ demandas=[]; }
+  migrateData();
+}
+function saveData(){ ghWrite(); }
+
+// ── MIGRATION (legacy status → demStageData) ──
+function migrateData(){
+  demandas.forEach(d=>{
+    if(!d.demStageData){
+      const legacyMap = {aberto:0,andamento:1,aguardando:2,resolvido:3};
+      const stage = legacyMap[d.status] ?? 0;
+      d.currentStage = stage;
+      d.demStageData = [{stage:0, date:d.emailDate||d.createdAt?.split('T')[0]||new Date().toISOString().split('T')[0], notes:''}];
+      if(stage>0) d.demStageData.push({stage, date:d.updatedAt?.split('T')[0]||d.emailDate, notes:'Migrado do status anterior.'});
+    }
+    if(d.currentStage===undefined) d.currentStage = 0;
+    if(!d.protocols){
+      d.protocols = d.aneelProtocol ? [{tipo:'Reclamação ANEEL',numero:d.aneelProtocol,date:d.emailDate||'',obs:''}] : [];
+      delete d.aneelProtocol;
+    }
+    if(!d.cliente) d.cliente = {};
+  });
+  ligacoes.forEach(l=>{ if(!l.cliente) l.cliente={}; });
+}
+
+// ── TOKEN ──
+function genToken(type){
+  const y = new Date().getFullYear();
+  const prefix = type==='nova_ligacao'?'LIG':type==='alteracao_carga'?'ALT':'DEM';
+  const src = prefix==='DEM'?demandas:ligacoes;
+  const n = src.filter(x=>x.token.startsWith(prefix+'-'+y)).length+1;
+  return `${prefix}-${y}-${String(n).padStart(3,'0')}`;
+}
+
+// ── UTILITIES ──
+function calcDays(dateStr){
+  if(!dateStr) return null;
+  const d = new Date(dateStr+'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.max(0, Math.floor((today-d)/86400000));
+}
+function calcWorkDays(dateStr){
+  if(!dateStr) return null;
+  const start = new Date(dateStr+'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  let count=0, d=new Date(start);
+  while(d<today){ d.setDate(d.getDate()+1); const w=d.getDay(); if(w!==0&&w!==6) count++; }
+  return count;
+}
+function calcDaysAuto(dateStr){ return daysMode==='util'?calcWorkDays(dateStr):calcDays(dateStr); }
+function dayClass(days){ if(days===null) return 'x'; if(days<15) return 's'; if(days<25) return 'w'; return 'd'; }
+function dayLabel(days,done){
+  if(done) return '✓ Concluído';
+  if(days===null) return '—';
+  if(days===0) return 'Hoje';
+  return days+(daysMode==='util'?' d.ú.':' dias');
+}
+function fmt(dateStr){ if(!dateStr) return '—'; return new Date(dateStr+'T00:00:00').toLocaleDateString('pt-BR'); }
+function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
+function fmtSize(b){ if(b<1024) return b+'B'; if(b<1048576) return (b/1024).toFixed(1)+'KB'; return (b/1048576).toFixed(1)+'MB'; }
+function fileIcon(name){ const e=(name||'').split('.').pop().toLowerCase(); const m={pdf:'fa-file-pdf',doc:'fa-file-word',docx:'fa-file-word',xls:'fa-file-excel',xlsx:'fa-file-excel',jpg:'fa-file-image',jpeg:'fa-file-image',png:'fa-file-image',eml:'fa-envelope',msg:'fa-envelope'}; return m[e]||'fa-file'; }
+function getCurStageDate(lig){ const s=lig.stageData?.[lig.currentStage]; return s?s.date:lig.emailDate; }
+function getDemCurDate(dem){ const s=dem.demStageData?.[dem.demStageData.length-1]; return s?s.date:dem.emailDate; }
+
+// ── DAYS MODE ──
+function setDaysMode(mode){
+  daysMode=mode;
+  document.getElementById('dtb-corrido').classList.toggle('active',mode==='corrido');
+  document.getElementById('dtb-util').classList.toggle('active',mode==='util');
+  renderDemandas();
+}
+
+// ── VIEW SWITCHING ──
+function switchView(v){
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const nb = document.getElementById('nav-'+v);
+  if(nb) nb.classList.add('active');
+  if(v==='dashboard') renderDashboard();
+  if(v==='kanban') renderKanban();
+  if(v==='demandas') renderDemandas();
+}
+
+// ── MODAL HELPERS ──
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function switchTab(modalId, tabId){
+  const modal=document.getElementById(modalId);
+  modal.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  modal.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  modal.querySelectorAll('.tab-btn').forEach(b=>{ if((b.getAttribute('onclick')||'').includes("'"+tabId+"'")) b.classList.add('active'); });
+}
+
+// ── DATALISTS ──
+function populateDatalist(){
+  ['dl-dist','dl-dist2'].forEach(id=>{
+    const dl=document.getElementById(id); if(!dl) return;
+    dl.innerHTML=DISTRIBUIDORAS.map(d=>`<option value="${d}">`).join('');
+  });
+  const allDists=[...new Set([...ligacoes.map(l=>l.distribuidora),...demandas.map(d=>d.distribuidora),...DISTRIBUIDORAS].filter(Boolean))].sort();
+  ['k-dist','d-dist'].forEach(id=>{
+    const sel=document.getElementById(id); if(!sel) return;
+    const cur=sel.value;
+    sel.innerHTML=`<option value="">Todas as distribuidoras</option>`+allDists.map(d=>`<option value="${d}">${d}</option>`).join('');
+    sel.value=cur;
+  });
+}
+
+// ── STAKEHOLDERS ──
+function renderSHList(ctx){
+  const list=ctx==='lig'?tmpLigSH:tmpDemSH;
+  const el=document.getElementById(ctx+'-sh-list'); if(!el) return;
+  el.innerHTML=list.map((sh,i)=>`<div class="sh-item"><div class="sh-info"><div style="display:flex;align-items:center;gap:8px"><span class="sh-name">${sh.nome}</span><span class="sh-tipo">${sh.tipo}</span></div><div class="sh-det">${sh.tel?`<span><i class="fa-solid fa-phone" style="font-size:10px"></i> ${sh.tel}</span>`:''} ${sh.email?`<a href="mailto:${sh.email}"><i class="fa-solid fa-envelope" style="font-size:10px"></i> ${sh.email}</a>`:''}</div></div><button class="btn btn-ghost btn-sm" onclick="removeSH('${ctx}',${i})"><i class="fa-solid fa-trash" style="color:var(--danger)"></i></button></div>`).join('');
+}
+function addStakeholder(ctx){
+  const n=document.getElementById(ctx==='lig'?'sh-nome':'dsh-nome').value.trim();
+  const t=document.getElementById(ctx==='lig'?'sh-tipo':'dsh-tipo').value;
+  const tel=document.getElementById(ctx==='lig'?'sh-tel':'dsh-tel').value.trim();
+  const em=document.getElementById(ctx==='lig'?'sh-email':'dsh-email').value.trim();
+  if(!n){alert('Informe o nome.');return;}
+  const list=ctx==='lig'?tmpLigSH:tmpDemSH;
+  list.push({nome:n,tipo:t,tel,email:em});
+  document.getElementById(ctx==='lig'?'sh-nome':'dsh-nome').value='';
+  document.getElementById(ctx==='lig'?'sh-tel':'dsh-tel').value='';
+  document.getElementById(ctx==='lig'?'sh-email':'dsh-email').value='';
+  renderSHList(ctx);
+}
+function removeSH(ctx,i){ (ctx==='lig'?tmpLigSH:tmpDemSH).splice(i,1); renderSHList(ctx); }
+
+// ── PROTOCOLS ──
+function renderProtocolList(){
+  const el=document.getElementById('dem-prot-list'); if(!el) return;
+  if(!tmpDemProto.length){el.innerHTML=''; return;}
+  el.innerHTML=tmpDemProto.map((p,i)=>`<div class="prot-item"><span class="prot-tipo">${p.tipo}</span><span class="prot-num">${p.numero}</span>${p.date?`<span class="prot-date">${fmt(p.date)}</span>`:''}<button class="att-del" onclick="removeProtocol(${i})"><i class="fa-solid fa-xmark"></i></button></div>`).join('');
+}
+function addProtocol(){
+  const tipo=document.getElementById('prot-tipo').value;
+  const num=document.getElementById('prot-num').value.trim();
+  const date=document.getElementById('prot-date').value;
+  const obs=document.getElementById('prot-obs').value.trim();
+  if(!num){alert('Informe o número do protocolo.');return;}
+  tmpDemProto.push({tipo,numero:num,date,obs});
+  document.getElementById('prot-num').value='';
+  document.getElementById('prot-obs').value='';
+  renderProtocolList();
+}
+function removeProtocol(i){ tmpDemProto.splice(i,1); renderProtocolList(); }
+
+// ── ATTACHMENTS ──
+function renderAttList(ctx){
+  const list=ctx==='lig'?tmpLigAtt:tmpDemAtt;
+  const el=document.getElementById(ctx+'-att-list'); if(!el) return;
+  el.innerHTML=list.map((a,i)=>`<div class="att-item"><div class="att-icon"><i class="fa-solid ${fileIcon(a.name)}"></i></div><div class="att-info"><div class="att-name">${a.name}</div><div class="att-size">${fmtSize(a.size)}</div></div><button class="att-del" onclick="removeAtt('${ctx}',${i})"><i class="fa-solid fa-xmark"></i></button></div>`).join('');
+}
+function addAttachments(event,ctx){ processFiles(event.target.files,ctx); event.target.value=''; }
+function processFiles(files,ctx){
+  const list=ctx==='lig'?tmpLigAtt:tmpDemAtt;
+  Array.from(files).forEach(f=>{
+    if(f.size>5*1024*1024){alert(`"${f.name}" maior que 5MB.`);return;}
+    const r=new FileReader();
+    r.onload=e=>{list.push({id:uid(),name:f.name,type:f.type,size:f.size,data:e.target.result,uploadedAt:new Date().toISOString()});renderAttList(ctx);};
+    r.readAsDataURL(f);
+  });
+}
+function removeAtt(ctx,i){ (ctx==='lig'?tmpLigAtt:tmpDemAtt).splice(i,1); renderAttList(ctx); }
+function dragOver(e,id){e.preventDefault();document.getElementById(id).classList.add('drag');}
+function dragLeave(e,id){document.getElementById(id).classList.remove('drag');}
+function dropFile(e,ctx){e.preventDefault();document.getElementById(ctx+'-att-drop').classList.remove('drag');processFiles(e.dataTransfer.files,ctx);}
+
+// ── TIPO BUTTONS ──
+function setTipo(t){
+  document.getElementById('f-tipo').value=t;
+  document.getElementById('tbtn-lig').classList.toggle('sel',t==='nova_ligacao');
+  document.getElementById('tbtn-alt').classList.toggle('sel',t==='alteracao_carga');
+}
+
+// ── LIGAÇÃO MODAL ──
+function openLigacaoModal(id){
+  editingLigId=id||null; tmpLigSH=[]; tmpLigAtt=[];
+  const fields=['f-titulo','f-uc','f-dist','f-email-date','f-carga','f-notes','f-c-nome','f-c-tel','f-c-email','fc-nome','fc-doc','fc-responsavel','fc-tel','fc-email','fc-obs'];
+  fields.forEach(fid=>{const el=document.getElementById(fid);if(el)el.value='';});
+  document.getElementById('f-email-date').value=new Date().toISOString().split('T')[0];
+  setTipo('nova_ligacao');
+  document.getElementById('mo-lig-title').textContent='Nova Solicitação';
+  if(id){
+    const l=ligacoes.find(x=>x.id===id); if(!l) return;
+    document.getElementById('mo-lig-title').textContent='Editar Solicitação';
+    setTipo(l.tipo);
+    document.getElementById('f-titulo').value=l.titulo;
+    document.getElementById('f-uc').value=l.uc||'';
+    document.getElementById('f-dist').value=l.distribuidora||'';
+    document.getElementById('f-email-date').value=l.emailDate||'';
+    document.getElementById('f-carga').value=l.carga||'';
+    document.getElementById('f-notes').value=l.notes||'';
+    document.getElementById('f-c-nome').value=l.consultorNome||'';
+    document.getElementById('f-c-tel').value=l.consultorTel||'';
+    document.getElementById('f-c-email').value=l.consultorEmail||'';
+    // Cliente
+    if(l.cliente){
+      document.getElementById('fc-nome').value=l.cliente.nome||'';
+      document.getElementById('fc-doc').value=l.cliente.doc||'';
+      document.getElementById('fc-responsavel').value=l.cliente.responsavel||'';
+      document.getElementById('fc-tel').value=l.cliente.tel||'';
+      document.getElementById('fc-email').value=l.cliente.email||'';
+      document.getElementById('fc-obs').value=l.cliente.obs||'';
+    }
+    tmpLigSH=JSON.parse(JSON.stringify(l.stakeholders||[]));
+    tmpLigAtt=JSON.parse(JSON.stringify(l.attachments||[]));
+  }
+  renderSHList('lig'); renderAttList('lig');
+  switchTab('mo-lig','t-ident');
+  openModal('mo-lig');
+}
+function saveLigacao(){
+  const titulo=document.getElementById('f-titulo').value.trim();
+  const dist=document.getElementById('f-dist').value.trim();
+  const emailDate=document.getElementById('f-email-date').value;
+  if(!titulo||!dist||!emailDate){alert('Preencha: Descrição, Distribuidora e Data do E-mail.');return;}
+  const cliente={
+    nome:document.getElementById('fc-nome').value.trim(),
+    doc:document.getElementById('fc-doc').value.trim(),
+    responsavel:document.getElementById('fc-responsavel').value.trim(),
+    tel:document.getElementById('fc-tel').value.trim(),
+    email:document.getElementById('fc-email').value.trim(),
+    obs:document.getElementById('fc-obs').value.trim(),
+  };
+  const data={tipo:document.getElementById('f-tipo').value,titulo,uc:document.getElementById('f-uc').value.trim(),distribuidora:dist,emailDate,carga:document.getElementById('f-carga').value.trim(),notes:document.getElementById('f-notes').value.trim(),consultorNome:document.getElementById('f-c-nome').value.trim(),consultorTel:document.getElementById('f-c-tel').value.trim(),consultorEmail:document.getElementById('f-c-email').value.trim(),cliente,stakeholders:JSON.parse(JSON.stringify(tmpLigSH)),attachments:JSON.parse(JSON.stringify(tmpLigAtt))};
+  if(editingLigId){
+    const idx=ligacoes.findIndex(x=>x.id===editingLigId);
+    if(idx>=0) ligacoes[idx]={...ligacoes[idx],...data,updatedAt:new Date().toISOString()};
+  } else {
+    ligacoes.push({id:uid(),token:genToken(data.tipo),currentStage:0,stageData:[{stage:0,date:emailDate,protocol:null,notes:''}],createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),...data});
+  }
+  saveData(); populateDatalist(); closeModal('mo-lig'); renderKanban();
+}
+
+// ── DEMANDA MODAL ──
+function openDemandaModal(id){
+  editingDemId=id||null; tmpDemSH=[]; tmpDemAtt=[]; tmpDemProto=[];
+  ['df-titulo','df-uc','df-dist','df-email-date','df-notes','dfc-nome','dfc-tel','dfc-email'].forEach(fid=>{const el=document.getElementById(fid);if(el)el.value='';});
+  document.getElementById('df-email-date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('df-tipo').value='memoria_massa';
+  document.getElementById('mo-dem-title').textContent='Nova Demanda';
+  if(id){
+    const d=demandas.find(x=>x.id===id); if(!d) return;
+    document.getElementById('mo-dem-title').textContent='Editar Demanda';
+    document.getElementById('df-tipo').value=d.tipo||'outro';
+    document.getElementById('df-titulo').value=d.titulo||'';
+    document.getElementById('df-uc').value=d.uc||'';
+    document.getElementById('df-dist').value=d.distribuidora||'';
+    document.getElementById('df-email-date').value=d.emailDate||'';
+    document.getElementById('df-notes').value=d.notes||'';
+    document.getElementById('dfc-nome').value=d.consultorNome||'';
+    document.getElementById('dfc-tel').value=d.consultorTel||'';
+    document.getElementById('dfc-email').value=d.consultorEmail||'';
+    tmpDemSH=JSON.parse(JSON.stringify(d.stakeholders||[]));
+    tmpDemAtt=JSON.parse(JSON.stringify(d.attachments||[]));
+    tmpDemProto=JSON.parse(JSON.stringify(d.protocols||[]));
+  }
+  renderSHList('dem'); renderAttList('dem'); renderProtocolList();
+  switchTab('mo-dem','dt-ident');
+  openModal('mo-dem');
+}
+function saveDemanda(){
+  const titulo=document.getElementById('df-titulo').value.trim();
+  const dist=document.getElementById('df-dist').value.trim();
+  const emailDate=document.getElementById('df-email-date').value;
+  if(!titulo||!dist||!emailDate){alert('Preencha: Descrição, Distribuidora e Data do E-mail.');return;}
+  const data={tipo:document.getElementById('df-tipo').value,titulo,uc:document.getElementById('df-uc').value.trim(),distribuidora:dist,emailDate,notes:document.getElementById('df-notes').value.trim(),consultorNome:document.getElementById('dfc-nome').value.trim(),consultorTel:document.getElementById('dfc-tel').value.trim(),consultorEmail:document.getElementById('dfc-email').value.trim(),protocols:JSON.parse(JSON.stringify(tmpDemProto)),stakeholders:JSON.parse(JSON.stringify(tmpDemSH)),attachments:JSON.parse(JSON.stringify(tmpDemAtt))};
+  if(editingDemId){
+    const idx=demandas.findIndex(x=>x.id===editingDemId);
+    if(idx>=0) demandas[idx]={...demandas[idx],...data,updatedAt:new Date().toISOString()};
+  } else {
+    demandas.push({id:uid(),token:genToken('dem'),currentStage:0,demStageData:[{stage:0,date:emailDate,notes:''}],createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),...data});
+  }
+  saveData(); populateDatalist(); closeModal('mo-dem'); renderDemandas();
+}
+
+// ── AVANÇAR ETAPA ──
+function openAvancar(id, type){
+  avancandoId=id; avancandoType=type;
+  const isLig=type==='lig';
+  const item=isLig?ligacoes.find(x=>x.id===id):demandas.find(x=>x.id===id);
+  if(!item) return;
+  const stages=isLig?STAGES:DEM_STAGES;
+  const curStage=item.currentStage;
+  if(curStage>=stages.length-1) return;
+  const nextStage=stages[curStage+1];
+  document.getElementById('av-title').textContent=`Avançar para: ${nextStage.name}`;
+  document.getElementById('av-info').innerHTML=`<i class="fa-solid fa-circle-info"></i> Etapa atual: <strong>${stages[curStage].name}</strong>. Ao avançar, nova contagem de dias inicia.`;
+  document.getElementById('av-date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('av-notes').value='';
+  document.getElementById('av-proto').value='';
+  const needProto=isLig&&nextStage.hasProto;
+  document.getElementById('av-proto-group').style.display=needProto?'flex':'none';
+  openModal('mo-avancar');
+}
+function confirmAvancar(){
+  const isLig=avancandoType==='lig';
+  const item=isLig?ligacoes.find(x=>x.id===avancandoId):demandas.find(x=>x.id===avancandoId);
+  if(!item) return;
+  const stages=isLig?STAGES:DEM_STAGES;
+  const nextStage=stages[item.currentStage+1];
+  const proto=document.getElementById('av-proto').value.trim();
+  const date=document.getElementById('av-date').value;
+  const notes=document.getElementById('av-notes').value.trim();
+  if(isLig&&nextStage.hasProto&&!proto){alert('Informe o número do protocolo.');return;}
+  if(!date){alert('Informe a data.');return;}
+  item.currentStage+=1;
+  if(isLig){
+    item.stageData.push({stage:item.currentStage,date,protocol:proto||null,notes});
+    if(item.currentStage===5) item.completedAt=new Date().toISOString();
+  } else {
+    item.demStageData.push({stage:item.currentStage,date,notes});
+  }
+  item.updatedAt=new Date().toISOString();
+  saveData(); closeModal('mo-avancar');
+  if(isLig) renderKanban(); else renderDemandas();
+  if(detailId===avancandoId) setTimeout(()=>openDetail(avancandoId,avancandoType),100);
+}
+function voltarEtapa(id, type){
+  const isLig=type==='lig';
+  const item=isLig?ligacoes.find(x=>x.id===id):demandas.find(x=>x.id===id);
+  if(!item||item.currentStage===0) return;
+  showConfirm('Deseja voltar para a etapa anterior? Os dados da etapa atual serão removidos.',()=>{
+    if(isLig){item.stageData.pop();item.completedAt=null;} else {item.demStageData.pop();}
+    item.currentStage-=1; item.updatedAt=new Date().toISOString();
+    saveData(); if(isLig)renderKanban();else renderDemandas();
+    setTimeout(()=>openDetail(id,type),100);
+  });
+}
+
+// ── RENDER KANBAN (Ligações) ──
+function renderKanban(){
+  const search=(document.getElementById('k-search')||{}).value?.toLowerCase()||'';
+  const dist=(document.getElementById('k-dist')||{}).value||'';
+  const tipo=(document.getElementById('k-tipo')||{}).value||'';
+  let items=ligacoes.filter(l=>{
+    if(dist&&l.distribuidora!==dist)return false;
+    if(tipo&&l.tipo!==tipo)return false;
+    if(search&&!`${l.titulo} ${l.token} ${l.uc} ${l.distribuidora} ${l.cliente?.nome||''}`.toLowerCase().includes(search))return false;
+    return true;
+  });
+  const board=document.getElementById('kanban-board');
+  board.innerHTML=STAGES.map(st=>{
+    const cols=items.filter(l=>l.currentStage===st.id);
+    const sorted=st.id===5?cols.sort((a,b)=>new Date(b.completedAt||0)-new Date(a.completedAt||0)):cols.sort((a,b)=>calcDays(getCurStageDate(b))-calcDays(getCurStageDate(a)));
+    return `<div class="k-col"><div class="k-col-hdr"><div class="k-icon" style="background:${st.color}"><i class="fa-solid ${st.icon}"></i></div><div class="k-title">${st.name}</div><span class="k-cnt">${sorted.length}</span>${st.id===0?`<button class="k-add" onclick="openLigacaoModal()" title="Nova solicitação"><i class="fa-solid fa-plus"></i></button>`:''}</div><div class="k-cards">${sorted.length===0?`<div class="k-empty"><i class="fa-solid fa-inbox"></i>Nenhum item</div>`:''}${sorted.map(l=>buildLigCard(l)).join('')}</div></div>`;
+  }).join('');
+}
+function buildLigCard(l){
+  const done=l.currentStage===5;
+  const days=done?null:calcDays(getCurStageDate(l));
+  const cls=done?'x':dayClass(days);
+  const sd=l.stageData?.[l.stageData.length-1]||{};
+  const attCount=(l.attachments||[]).length;
+  return `<div class="card ${cls}" onclick="openDetail('${l.id}','lig')">
+    <div class="card-top"><span class="c-token">${l.token}</span><span class="c-type ${l.tipo==='nova_ligacao'?'lig':'alt'}">${l.tipo==='nova_ligacao'?'Nova Lig.':'Alt. Carga'}</span></div>
+    <div class="c-title" title="${l.titulo}">${l.titulo}</div>
+    <div class="c-sub">${l.distribuidora||''}${l.uc?' · UC '+l.uc:''}</div>
+    ${l.cliente?.nome?`<div class="c-sub" style="margin-top:2px"><i class="fa-solid fa-building-user" style="font-size:9px;color:var(--sky)"></i> ${l.cliente.nome}</div>`:''}
+    ${sd.protocol?`<div style="margin-top:4px"><span class="c-proto"><i class="fa-solid fa-hashtag" style="font-size:9px"></i> ${sd.protocol}</span></div>`:''}
+    <div class="c-foot"><div class="c-consultor">${l.consultorNome?`<i class="fa-solid fa-user" style="font-size:10px"></i><span>${l.consultorNome}</span>`:'<span style="opacity:.4">Sem consultor</span>'}</div>${attCount?`<div class="c-attach"><i class="fa-solid fa-paperclip" style="font-size:10px"></i>${attCount}</div>`:''}<span class="d-badge ${cls}">${dayLabel(days,done)}</span></div>
+  </div>`;
+}
+
+// ── RENDER DEMANDAS (Kanban) ──
+function renderDemandas(){
+  const search=(document.getElementById('d-search')||{}).value?.toLowerCase()||'';
+  const dist=(document.getElementById('d-dist')||{}).value||'';
+  const tipo=(document.getElementById('d-tipo')||{}).value||'';
+  let items=demandas.filter(d=>{
+    if(dist&&d.distribuidora!==dist)return false;
+    if(tipo&&d.tipo!==tipo)return false;
+    if(search&&!`${d.titulo} ${d.token} ${d.uc} ${d.distribuidora}`.toLowerCase().includes(search))return false;
+    return true;
+  });
+  const board=document.getElementById('dem-kanban-board');
+  board.innerHTML=DEM_STAGES.map(st=>{
+    const cols=items.filter(d=>d.currentStage===st.id);
+    const sorted=st.id===3?cols.sort((a,b)=>new Date(b.updatedAt||0)-new Date(a.updatedAt||0)):cols.sort((a,b)=>calcDaysAuto(getDemCurDate(b))-calcDaysAuto(getDemCurDate(a)));
+    return `<div class="k-col"><div class="k-col-hdr"><div class="k-icon" style="background:${st.color}"><i class="fa-solid ${st.icon}"></i></div><div class="k-title">${st.name}</div><span class="k-cnt">${sorted.length}</span>${st.id===0?`<button class="k-add" onclick="openDemandaModal()" title="Nova demanda"><i class="fa-solid fa-plus"></i></button>`:''}</div><div class="k-cards">${sorted.length===0?`<div class="k-empty"><i class="fa-solid fa-inbox"></i>Nenhum item</div>`:''}${sorted.map(d=>buildDemCard(d)).join('')}</div></div>`;
+  }).join('');
+}
+function buildDemCard(d){
+  const done=d.currentStage===3;
+  const days=calcDaysAuto(getDemCurDate(d));
+  const cls=done?'x':dayClass(days);
+  const protoCount=(d.protocols||[]).length;
+  const attCount=(d.attachments||[]).length;
+  return `<div class="card ${cls}" onclick="openDetail('${d.id}','dem')">
+    <div class="card-top"><span class="c-token">${d.token}</span><span class="c-type dem">${DEMAND_TYPES[d.tipo]?.split(' ').slice(0,2).join(' ')||'Demanda'}</span></div>
+    <div class="c-title" title="${d.titulo}">${d.titulo}</div>
+    <div class="c-sub">${d.distribuidora||''}${d.uc?' · UC '+d.uc:''}</div>
+    ${protoCount?`<div style="margin-top:4px;font-size:10px;color:var(--muted)"><i class="fa-solid fa-hashtag" style="font-size:9px"></i> ${protoCount} protocolo${protoCount>1?'s':''}</div>`:''}
+    <div class="c-foot"><div class="c-consultor">${d.consultorNome?`<i class="fa-solid fa-user" style="font-size:10px"></i><span>${d.consultorNome}</span>`:'<span style="opacity:.4">Sem consultor</span>'}</div>${attCount?`<div class="c-attach"><i class="fa-solid fa-paperclip" style="font-size:10px"></i>${attCount}</div>`:''}<span class="d-badge ${cls}">${dayLabel(days,done)}</span></div>
+  </div>`;
+}
+
+// ── DETAIL MODAL ──
+function openDetail(id, type){
+  detailId=id; detailType=type;
+  if(type==='lig'){
+    const l=ligacoes.find(x=>x.id===id); if(!l) return;
+    const done=l.currentStage===5;
+    const days=done?null:calcDays(getCurStageDate(l));
+    const cls=done?'x':dayClass(days);
+    document.getElementById('detail-icon').style.background=STAGES[l.currentStage].color;
+    document.getElementById('detail-icon').innerHTML=`<i class="fa-solid ${STAGES[l.currentStage].icon}"></i>`;
+    document.getElementById('detail-titulo').textContent=l.titulo;
+    document.getElementById('detail-badges').innerHTML=`<span class="badge b-primary" style="font-family:monospace">${l.token}</span><span class="c-type ${l.tipo==='nova_ligacao'?'lig':'alt'}">${l.tipo==='nova_ligacao'?'Nova Ligação':'Alteração de Carga'}</span><span class="d-badge ${cls}">${dayLabel(days,done)}</span>`;
+    document.getElementById('detail-timeline').style.display='flex';
+    document.getElementById('detail-timeline').innerHTML=buildTimeline(l,STAGES);
+    const da=document.getElementById('detail-days-alert');
+    if(!done&&days!==null&&days>=25){da.style.display='block';da.className='alert alert-warning';da.innerHTML=`<i class="fa-solid fa-triangle-exclamation"></i> <strong>${days>=30?'PRAZO VENCIDO':'Atenção: prazo próximo'}!</strong> ${days} dias na etapa "${STAGES[l.currentStage].name}". Prazo ANEEL: 30 dias.`;}else{da.style.display='none';}
+    const sd=l.stageData?.[l.stageData.length-1]||{};
+    let infoHTML=`<div class="info-item"><label>Token</label><span style="font-family:monospace">${l.token}</span></div><div class="info-item"><label>Etapa Atual</label><span style="color:${STAGES[l.currentStage].color}">${STAGES[l.currentStage].name}</span></div><div class="info-item"><label>UC / Endereço</label><span>${l.uc||'—'}</span></div><div class="info-item"><label>Distribuidora</label><span>${l.distribuidora||'—'}</span></div><div class="info-item"><label>Data E-mail</label><span>${fmt(l.emailDate)}</span></div><div class="info-item"><label>Protocolo Atual</label><span style="font-family:monospace">${sd.protocol||'—'}</span></div><div class="info-item"><label>Carga Solicitada</label><span>${l.carga||'—'}</span></div><div class="info-item"><label>Criado em</label><span>${fmt(l.createdAt?.split('T')[0])}</span></div>`;
+    if(l.completedAt) infoHTML+=`<div class="info-item"><label>Concluído em</label><span>${fmt(l.completedAt.split('T')[0])}</span></div>`;
+    // Client block
+    if(l.cliente?.nome) infoHTML+=`<div class="info-item full"><div class="client-box"><div class="client-box-title"><i class="fa-solid fa-building-user"></i> Cliente</div><div class="client-grid">${l.cliente.nome?`<div class="client-field"><label>Nome/Razão Social</label><span>${l.cliente.nome}</span></div>`:''} ${l.cliente.doc?`<div class="client-field"><label>CPF/CNPJ</label><span>${l.cliente.doc}</span></div>`:''} ${l.cliente.responsavel?`<div class="client-field"><label>Responsável</label><span>${l.cliente.responsavel}</span></div>`:''} ${l.cliente.tel?`<div class="client-field"><label>Telefone</label><span>${l.cliente.tel}</span></div>`:''} ${l.cliente.email?`<div class="client-field"><label>E-mail</label><span><a href="mailto:${l.cliente.email}" style="color:var(--primary-light)">${l.cliente.email}</a></span></div>`:''}</div>${l.cliente.obs?`<div style="font-size:12px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid #bae6fd">${l.cliente.obs}</div>`:''}</div></div>`;
+    document.getElementById('det-info-grid').innerHTML=infoHTML;
+    const nw=document.getElementById('det-notes-wrap');
+    if(l.notes){nw.style.display='block';document.getElementById('det-notes').textContent=l.notes;}else{nw.style.display='none';}
+    document.getElementById('det-hist-content').innerHTML=buildLigHistory(l);
+    document.getElementById('det-cont-content').innerHTML=buildContacts(l);
+    document.getElementById('det-att-content').innerHTML=buildAttachments(l);
+    let footer=`<button class="btn btn-ghost btn-sm" onclick="confirmDeleteLig('${l.id}')"><i class="fa-solid fa-trash" style="color:var(--danger)"></i> Excluir</button><button class="btn btn-outline" onclick="closeModal('mo-detail');openLigacaoModal('${l.id}')"><i class="fa-solid fa-pen"></i> Editar</button>`;
+    if(l.currentStage>0) footer+=`<button class="btn btn-warning" onclick="voltarEtapa('${l.id}','lig')"><i class="fa-solid fa-arrow-left"></i> Voltar</button>`;
+    if(!done) footer+=`<button class="btn btn-success" onclick="closeModal('mo-detail');openAvancar('${l.id}','lig')"><i class="fa-solid fa-arrow-right"></i> Avançar Etapa</button>`;
+    document.getElementById('detail-footer').innerHTML=footer;
+  } else {
+    // DEM
+    const d=demandas.find(x=>x.id===id); if(!d) return;
+    const done=d.currentStage===3;
+    const days=calcDaysAuto(getDemCurDate(d));
+    const cls=done?'x':dayClass(days);
+    document.getElementById('detail-icon').style.background=DEM_STAGES[d.currentStage].color;
+    document.getElementById('detail-icon').innerHTML=`<i class="fa-solid ${DEM_STAGES[d.currentStage].icon}"></i>`;
+    document.getElementById('detail-titulo').textContent=d.titulo;
+    document.getElementById('detail-badges').innerHTML=`<span class="badge b-primary" style="font-family:monospace">${d.token}</span><span class="c-type dem">${DEMAND_TYPES[d.tipo]||d.tipo}</span><span class="d-badge ${cls}">${dayLabel(days,done)}</span>`;
+    document.getElementById('detail-timeline').style.display='flex';
+    document.getElementById('detail-timeline').innerHTML=buildTimeline(d,DEM_STAGES);
+    document.getElementById('detail-days-alert').style.display='none';
+    document.getElementById('det-info-grid').innerHTML=`<div class="info-item"><label>Token</label><span style="font-family:monospace">${d.token}</span></div><div class="info-item"><label>Etapa Atual</label><span style="color:${DEM_STAGES[d.currentStage].color}">${DEM_STAGES[d.currentStage].name}</span></div><div class="info-item"><label>UC / Endereço</label><span>${d.uc||'—'}</span></div><div class="info-item"><label>Distribuidora</label><span>${d.distribuidora||'—'}</span></div><div class="info-item"><label>Data E-mail</label><span>${fmt(d.emailDate)}</span></div><div class="info-item"><label>Tipo</label><span>${DEMAND_TYPES[d.tipo]||d.tipo}</span></div>`;
+    const nw=document.getElementById('det-notes-wrap');
+    if(d.notes){nw.style.display='block';document.getElementById('det-notes').textContent=d.notes;}else{nw.style.display='none';}
+    document.getElementById('det-hist-content').innerHTML=buildDemHistory(d);
+    document.getElementById('det-cont-content').innerHTML=buildContacts(d);
+    document.getElementById('det-att-content').innerHTML=buildDemAttachments(d);
+    let footer=`<button class="btn btn-ghost btn-sm" onclick="confirmDeleteDem('${d.id}')"><i class="fa-solid fa-trash" style="color:var(--danger)"></i> Excluir</button><button class="btn btn-outline" onclick="closeModal('mo-detail');openDemandaModal('${d.id}')"><i class="fa-solid fa-pen"></i> Editar</button>`;
+    if(d.currentStage>0) footer+=`<button class="btn btn-warning" onclick="voltarEtapa('${d.id}','dem')"><i class="fa-solid fa-arrow-left"></i> Voltar</button>`;
+    if(!done) footer+=`<button class="btn btn-success" onclick="closeModal('mo-detail');openAvancar('${d.id}','dem')"><i class="fa-solid fa-arrow-right"></i> Avançar Etapa</button>`;
+    document.getElementById('detail-footer').innerHTML=footer;
+  }
+  switchTab('mo-detail','det-info');
+  openModal('mo-detail');
+}
+
+// ── BUILDERS ──
+function buildTimeline(item, stages){
+  let html='<div class="stage-timeline">';
+  stages.forEach((st,i)=>{
+    if(i>0) html+=`<div class="st-line ${i<=item.currentStage?'done-line':''}"></div>`;
+    const done=i<item.currentStage, active=i===item.currentStage, future=i>item.currentStage;
+    html+=`<div class="st-step"><div class="st-dot ${done?'done':active?'active':'future'}" style="${future?'':'background:'+st.color}">${done?'<i class="fa-solid fa-check" style="font-size:11px"></i>':`<i class="fa-solid ${st.icon}" style="font-size:11px"></i>`}</div><div class="st-lbl ${active?'active':''}">${st.short}</div></div>`;
+  });
+  return html+'</div>';
+}
+function buildLigHistory(l){
+  if(!l.stageData?.length) return '<div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i>Nenhuma etapa registrada.</div>';
+  return l.stageData.map(sd=>{
+    const st=STAGES[sd.stage];
+    return `<div class="hist-item"><div class="hist-hdr"><div class="hist-num" style="background:${st.color}">${sd.stage+1}</div><div class="hist-stage">${st.name}</div><div class="hist-date">${fmt(sd.date)}</div></div>${sd.protocol?`<div><span class="hist-proto"><i class="fa-solid fa-hashtag" style="font-size:9px"></i> ${sd.protocol}</span></div>`:''} ${sd.notes?`<div class="hist-notes">${sd.notes}</div>`:''}</div>`;
+  }).join('');
+}
+function buildDemHistory(d){
+  const stageBlock=d.demStageData?.length?d.demStageData.map(sd=>{
+    const st=DEM_STAGES[sd.stage];
+    return `<div class="hist-item"><div class="hist-hdr"><div class="hist-num" style="background:${st.color}">${sd.stage+1}</div><div class="hist-stage">${st.name}</div><div class="hist-date">${fmt(sd.date)}</div></div>${sd.notes?`<div class="hist-notes">${sd.notes}</div>`:''}</div>`;
+  }).join(''):'';
+  const protoBlock=d.protocols?.length?`<div class="form-section-title" style="font-size:12px;margin-top:16px;margin-bottom:10px"><i class="fa-solid fa-hashtag"></i> Protocolos Registrados</div><div class="prot-list">`+d.protocols.map(p=>`<div class="prot-item"><span class="prot-tipo">${p.tipo}</span><span class="prot-num">${p.numero}</span>${p.date?`<span class="prot-date">${fmt(p.date)}</span>`:''}</div>`).join('')+'</div>':'';
+  return (stageBlock||'<div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i>Nenhuma etapa.</div>')+protoBlock;
+}
+function buildContacts(obj){
+  let html='';
+  if(obj.consultorNome||obj.consultorTel||obj.consultorEmail){
+    html+=`<div style="margin-bottom:16px"><div class="form-section-title" style="font-size:12px;margin-bottom:10px"><i class="fa-solid fa-building"></i> Consultor na Concessionária</div><div class="sh-item"><div class="sh-info"><div class="sh-name">${obj.consultorNome||'—'}</div><div class="sh-det">${obj.consultorTel?`<span><i class="fa-solid fa-phone" style="font-size:10px"></i> ${obj.consultorTel}</span>`:''} ${obj.consultorEmail?`<a href="mailto:${obj.consultorEmail}"><i class="fa-solid fa-envelope" style="font-size:10px"></i> ${obj.consultorEmail}</a>`:''}</div></div></div></div>`;
+  }
+  if(obj.stakeholders?.length){
+    html+=`<div><div class="form-section-title" style="font-size:12px;margin-bottom:10px"><i class="fa-solid fa-users"></i> Stakeholders</div>`+obj.stakeholders.map(sh=>`<div class="sh-item"><div class="sh-info"><div style="display:flex;align-items:center;gap:8px"><span class="sh-name">${sh.nome}</span><span class="sh-tipo">${sh.tipo}</span></div><div class="sh-det">${sh.tel?`<span><i class="fa-solid fa-phone" style="font-size:10px"></i> ${sh.tel}</span>`:''} ${sh.email?`<a href="mailto:${sh.email}"><i class="fa-solid fa-envelope" style="font-size:10px"></i> ${sh.email}</a>`:''}</div></div></div>`).join('')+'</div>';
+  }
+  if(!html) html='<div class="empty-state"><i class="fa-solid fa-user-slash"></i>Nenhum contato cadastrado.</div>';
+  return html;
+}
+function buildAttachments(obj){
+  const list=obj.attachments||[];
+  if(!list.length) return '<div class="empty-state"><i class="fa-solid fa-file-circle-xmark"></i>Nenhum anexo.</div>';
+  return `<div class="att-list">`+list.map(a=>`<div class="att-item"><div class="att-icon"><i class="fa-solid ${fileIcon(a.name)}"></i></div><div class="att-info"><div class="att-name">${a.name}</div><div class="att-size">${fmtSize(a.size)}</div></div><a href="${a.data}" download="${a.name}" class="btn btn-outline btn-sm"><i class="fa-solid fa-download"></i></a></div>`).join('')+'</div>';
+}
+function buildDemAttachments(obj){ return buildAttachments(obj); }
+
+// ── DELETE ──
+function confirmDeleteLig(id){ const l=ligacoes.find(x=>x.id===id); showConfirm(`Excluir <strong>${l?.token}</strong>?`,()=>{ligacoes=ligacoes.filter(x=>x.id!==id);saveData();closeModal('mo-detail');renderKanban();}); }
+function confirmDeleteDem(id){ const d=demandas.find(x=>x.id===id); showConfirm(`Excluir <strong>${d?.token}</strong>?`,()=>{demandas=demandas.filter(x=>x.id!==id);saveData();closeModal('mo-detail');renderDemandas();}); }
+function showConfirm(msg,cb){ confirmCb=cb; document.getElementById('conf-msg').innerHTML=msg; openModal('mo-confirm'); }
+function confirmAction(){ if(confirmCb){confirmCb();confirmCb=null;} closeModal('mo-confirm'); }
+
+// ── DASHBOARD ──
+function renderDashboard(){
+  const activeLig=ligacoes.filter(l=>l.currentStage<5);
+  const overdueLig=activeLig.filter(l=>{const d=calcDays(getCurStageDate(l));return d!==null&&d>=30;});
+  const critLig=activeLig.filter(l=>{const d=calcDays(getCurStageDate(l));return d!==null&&d>=25&&d<30;});
+  const finLig=ligacoes.filter(l=>l.currentStage===5);
+  const activeDem=demandas.filter(d=>d.currentStage<3);
+  const resolvedDem=demandas.filter(d=>d.currentStage===3);
+  document.getElementById('dash-stats').innerHTML=[
+    {icon:'fa-plug',bg:'#1e40af',val:ligacoes.length,lbl:'Total Ligações/Alt.'},
+    {icon:'fa-spinner',bg:'#0284c7',val:activeLig.length,lbl:'Em Andamento'},
+    {icon:'fa-fire',bg:'#ef4444',val:overdueLig.length,lbl:'Em Atraso (>30 dias)'},
+    {icon:'fa-triangle-exclamation',bg:'#f59e0b',val:critLig.length,lbl:'Críticas (25-30 dias)'},
+    {icon:'fa-check',bg:'#10b981',val:finLig.length,lbl:'Ligações Concluídas'},
+    {icon:'fa-list-check',bg:'#7c3aed',val:demandas.length,lbl:'Total de Demandas'},
+    {icon:'fa-folder-open',bg:'#ea580c',val:activeDem.length,lbl:'Demandas em Aberto'},
+    {icon:'fa-circle-check',bg:'#10b981',val:resolvedDem.length,lbl:'Demandas Resolvidas'},
+  ].map(s=>`<div class="stat-card"><div class="stat-icon" style="background:${s.bg}"><i class="fa-solid ${s.icon}"></i></div><div class="stat-val">${s.val}</div><div class="stat-lbl">${s.lbl}</div></div>`).join('');
+  const urgEl=document.getElementById('dash-urgent');
+  const urgItems=activeLig.filter(l=>{const d=calcDays(getCurStageDate(l));return d!==null&&d>=20;}).sort((a,b)=>calcDays(getCurStageDate(b))-calcDays(getCurStageDate(a))).slice(0,8);
+  urgEl.innerHTML=urgItems.length?urgItems.map(l=>{const d=calcDays(getCurStageDate(l));const cls=dayClass(d);const colors={s:'var(--success)',w:'var(--warning)',d:'var(--danger)'};return `<div class="urgent-item" onclick="switchView('kanban');setTimeout(()=>openDetail('${l.id}','lig'),200)"><div class="urgent-dot" style="background:${colors[cls]||'#94a3b8'}"></div><div class="urgent-info"><div class="urgent-title">${l.titulo}</div><div class="urgent-sub">${l.token} · ${STAGES[l.currentStage].name} · ${l.distribuidora||'—'}</div></div><span class="d-badge ${cls}">${d} dias</span></div>`;}).join(''):'<div class="empty-state" style="padding:20px"><i class="fa-solid fa-circle-check" style="color:var(--success)"></i><span style="font-size:13px">Nenhuma ligação crítica</span></div>';
+  const demUrgEl=document.getElementById('dash-dem-urgent');
+  const demItems=activeDem.sort((a,b)=>calcDays(b.emailDate)-calcDays(a.emailDate)).slice(0,8);
+  demUrgEl.innerHTML=demItems.length?demItems.map(d=>{const days=calcDays(d.emailDate);const cls=dayClass(days);const colors={s:'var(--success)',w:'var(--warning)',d:'var(--danger)'};return `<div class="urgent-item" onclick="switchView('demandas');setTimeout(()=>openDetail('${d.id}','dem'),200)"><div class="urgent-dot" style="background:${colors[cls]||'#94a3b8'}"></div><div class="urgent-info"><div class="urgent-title">${d.titulo}</div><div class="urgent-sub">${d.token} · ${DEM_STAGES[d.currentStage].name} · ${d.distribuidora||'—'}</div></div><span class="d-badge ${cls}">${days!==null?days+' dias':'—'}</span></div>`;}).join(''):'<div class="empty-state" style="padding:20px"><i class="fa-solid fa-circle-check" style="color:var(--success)"></i><span style="font-size:13px">Nenhuma demanda em aberto</span></div>';
+}
+
+// ── EXPORT / IMPORT ──
+function exportData(){
+  const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),ligacoes,demandas},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`gestao-demandas-${new Date().toISOString().split('T')[0]}.json`; a.click();
+}
+function importData(event){
+  const file=event.target.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.ligacoes||!data.demandas) throw new Error('Formato inválido');
+      showConfirm(`Substituir dados atuais pelos do arquivo? (${data.ligacoes.length} ligações, ${data.demandas.length} demandas)`,()=>{
+        ligacoes=data.ligacoes; demandas=data.demandas; migrateData();
+        saveData(); populateDatalist(); renderKanban(); renderDemandas(); alert('Importado com sucesso!');
+      });
+    }catch(err){alert('Arquivo inválido.');}
+  };
+  r.readAsText(file); event.target.value='';
+}
+
+// ── CLOSE ON OVERLAY ──
+document.querySelectorAll('.mo').forEach(mo=>mo.addEventListener('click',e=>{if(e.target===mo)mo.classList.remove('open');}));
+
+
+// ── LOGIN ──
+const PWD_HASH = '27b2f29c54b3b2147b4350509675a61d34bc903084a62a314f5f31ef36e351f0';
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function doLogin(){
+  const pwd=document.getElementById('login-pwd').value;
+  const hash=await sha256(pwd);
+  if(hash===PWD_HASH){
+    sessionStorage.setItem('gdd_auth','1');
+    document.getElementById('login-screen').classList.add('hidden');
+  }else{
+    const err=document.getElementById('login-error');
+    err.textContent='Senha incorreta. Tente novamente.';
+    document.getElementById('login-pwd').value='';
+    setTimeout(()=>err.textContent='',3000);
+  }
+}
+function togglePwd(){
+  const inp=document.getElementById('login-pwd');
+  const ico=document.getElementById('eye-icon');
+  if(inp.type==='password'){inp.type='text';ico.className='fa-solid fa-eye-slash';}
+  else{inp.type='password';ico.className='fa-solid fa-eye';}
+}
+// Check session on load
+if(sessionStorage.getItem('gdd_auth')==='1'){
+  document.getElementById('login-screen').classList.add('hidden');
+}
+
+// ── INIT ──
+function init(){ loadData(); populateDatalist(); switchView('kanban'); ghInit(); }
+init();
+</script>
+
+<footer style="background:var(--navy);color:rgba(255,255,255,.4);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:500;text-align:center;padding:10px 24px;letter-spacing:.4px;border-top:1px solid rgba(255,255,255,.08);">
+  BESCO Energia &nbsp;·&nbsp; Gestão de Demandas das Distribuidoras (GDD) &nbsp;·&nbsp; Uso interno
+</footer>
+</body>
+</html>
