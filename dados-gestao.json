@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-23T18:52:51.124Z",
+  "updatedAt": "2026-04-23T20:44:54.908Z",
   "ligacoes": [
     {
       "id": "arobhzep8limobua1is",
@@ -35,8 +35,22 @@
         "obs": ""
       },
       "stakeholders": [],
-      "attachments": []
+      "attachments": [],
+      "clienteId": null
     }
   ],
-  "demandas": []
+  "demandas": [],
+  "clientes": [
+    {
+      "id": "nkv4bqweho9mobya5mk",
+      "token": "CLI-001",
+      "createdAt": "2026-04-23T20:44:54.908Z",
+      "updatedAt": "2026-04-23T20:44:54.908Z",
+      "razaoSocial": "Hiper ideal",
+      "cnpj": "",
+      "obs": "",
+      "ucs": [],
+      "contatos": []
+    }
+  ]
 }
