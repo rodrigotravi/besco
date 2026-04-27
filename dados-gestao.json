@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:29:07.520Z",
+  "updatedAt": "2026-04-27T20:30:51.974Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -585,7 +585,7 @@
     {
       "id": "n1i4skt8oyjmohng7yo",
       "token": "DEM-2026-012",
-      "currentStage": 1,
+      "currentStage": 2,
       "demStageData": [
         {
           "stage": 0,
@@ -596,10 +596,15 @@
           "stage": 1,
           "date": "2026-04-16",
           "notes": "Consultora SINARA solicitou providencias do seu colega consultor TIAGONAVARRO"
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-20",
+          "notes": "Reiterei o pedido ao consultor TIAGONAVARRO complementando com a nota 9202019013 gerado no @atendimento.estadual@neoenergia.com"
         }
       ],
       "createdAt": "2026-04-27T20:28:19.152Z",
-      "updatedAt": "2026-04-27T20:29:07.520Z",
+      "updatedAt": "2026-04-27T20:30:51.974Z",
       "tipo": "memoria_massa",
       "titulo": "Dados de curto-circuito",
       "uc": "7097170864",
