@@ -1,51 +1,6 @@
 {
   "version": 2,
-  "clientes": [
-    {
-      "id": "nkv4bqweho9mobya5mk",
-      "token": "CLI-001",
-      "createdAt": "2026-04-23T20:44:54.908Z",
-      "updatedAt": "2026-04-23T20:44:54.908Z",
-      "razaoSocial": "Hiper ideal",
-      "cnpj": "",
-      "obs": "",
-      "ucs": [],
-      "contatos": []
-    },
-    {
-      "id": "CLI1777300983370",
-      "token": "CLI-002",
-      "razaoSocial": "Hiper Ideal (Piatã)",
-      "cnpj": "02212937000741",
-      "obs": "Ligação provisória para obras de ampliação",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T14:43:03.370Z",
-      "updatedAt": "2026-04-27T15:14:14.972Z"
-    },
-    {
-      "id": "CLI1777304161910",
-      "token": "CLI-003",
-      "razaoSocial": "Hiper Ideal (Portão)",
-      "cnpj": "",
-      "obs": "Solicitação de relatório memória de massa",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T15:36:01.910Z",
-      "updatedAt": "2026-04-27T15:36:01.910Z"
-    },
-    {
-      "id": "CLI1777308232121",
-      "token": "CLI-004",
-      "razaoSocial": "Hiper Ideal (Alphaville)",
-      "cnpj": "",
-      "obs": "",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T16:43:52.121Z",
-      "updatedAt": "2026-04-27T16:43:52.121Z"
-    }
-  ],
+  "updatedAt": "2026-04-27T18:35:55.945Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -84,6 +39,34 @@
       "consultorTel": "",
       "consultorEmail": "",
       "clienteId": "CLI1777300983370",
+      "stakeholders": [],
+      "attachments": []
+    },
+    {
+      "id": "eyg2oz9094mohjfovc",
+      "token": "LIG-2026-002",
+      "currentStage": 0,
+      "stageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-02",
+          "protocol": null,
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-27T18:35:55.944Z",
+      "updatedAt": "2026-04-27T18:35:55.944Z",
+      "tipo": "nova_ligacao",
+      "titulo": "Ligação nova",
+      "uc": "",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-02",
+      "carga": "",
+      "notes": "Ligação nova",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "clienteId": "CLI1777308232121",
       "stakeholders": [],
       "attachments": []
     }
@@ -172,6 +155,52 @@
       "protocols": [],
       "stakeholders": [],
       "attachments": []
+    }
+  ],
+  "clientes": [
+    {
+      "id": "nkv4bqweho9mobya5mk",
+      "token": "CLI-001",
+      "createdAt": "2026-04-23T20:44:54.908Z",
+      "updatedAt": "2026-04-23T20:44:54.908Z",
+      "razaoSocial": "Hiper ideal",
+      "cnpj": "",
+      "obs": "",
+      "ucs": [],
+      "contatos": []
+    },
+    {
+      "id": "CLI1777308232121",
+      "token": "CLI-004",
+      "razaoSocial": "Hiper Ideal (Alphaville)",
+      "cnpj": "",
+      "obs": "",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T16:43:52.121Z",
+      "updatedAt": "2026-04-27T16:43:52.121Z"
+    },
+    {
+      "id": "CLI1777300983370",
+      "token": "CLI-002",
+      "razaoSocial": "Hiper Ideal (Piatã)",
+      "cnpj": "02212937000741",
+      "obs": "Ligação provisória para obras de ampliação",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T14:43:03.370Z",
+      "updatedAt": "2026-04-27T15:14:14.972Z"
+    },
+    {
+      "id": "CLI1777304161910",
+      "token": "CLI-003",
+      "razaoSocial": "Hiper Ideal (Portão)",
+      "cnpj": "",
+      "obs": "Solicitação de relatório memória de massa",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T15:36:01.910Z",
+      "updatedAt": "2026-04-27T15:36:01.910Z"
     }
   ]
 }
