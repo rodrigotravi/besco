@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:29:15.214Z",
+  "updatedAt": "2026-04-27T19:30:46.496Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -309,16 +309,21 @@
     {
       "id": "2ihi636wrqimohlc9fx",
       "token": "DEM-2026-005",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-03-23",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-03-31",
+          "notes": "Consultora SINARA nos retornou informando que a demanda foi reportada ao setor de operações para programação."
         }
       ],
       "createdAt": "2026-04-27T19:29:15.213Z",
-      "updatedAt": "2026-04-27T19:29:15.214Z",
+      "updatedAt": "2026-04-27T19:30:46.496Z",
       "tipo": "outro",
       "titulo": "Solicitação de poda",
       "uc": "70015323",
