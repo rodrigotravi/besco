@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-24T17:48:56.957Z",
-  "ligacoes": [],
-  "demandas": [],
   "clientes": [
     {
       "id": "nkv4bqweho9mobya5mk",
@@ -14,6 +11,19 @@
       "obs": "",
       "ucs": [],
       "contatos": []
+    },
+    {
+      "id": "CLI1777300983370",
+      "token": "CLI-002",
+      "razaoSocial": "Hiper Ideal (Piatã)",
+      "cnpj": "",
+      "obs": "Ligação provisória gra para obras",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T14:43:03.370Z",
+      "updatedAt": "2026-04-27T14:43:03.370Z"
     }
-  ]
+  ],
+  "ligacoes": [],
+  "demandas": []
 }
