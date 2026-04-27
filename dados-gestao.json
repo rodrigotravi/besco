@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:48:08.684Z",
+  "updatedAt": "2026-04-27T19:48:53.891Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -383,16 +383,21 @@
     {
       "id": "smubsv4252jmohm0k18",
       "token": "DEM-2026-007",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-03-31",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-03-31",
+          "notes": "Consultor Coelba gerou TN 2115139155 para elaboração do termo aditivo ao contrato."
         }
       ],
       "createdAt": "2026-04-27T19:48:08.684Z",
-      "updatedAt": "2026-04-27T19:48:08.684Z",
+      "updatedAt": "2026-04-27T19:48:53.891Z",
       "tipo": "alteracao_demanda",
       "titulo": "Aumento de demanda contratada (sem obras)",
       "uc": "207199982",
