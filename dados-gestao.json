@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:05:15.437Z",
+  "updatedAt": "2026-04-27T15:09:09.093Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -41,16 +41,21 @@
     {
       "id": "j7t89w2mjcmohbvund",
       "token": "DEM-2026-001",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-04-06",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-15",
+          "notes": "Retorno do consultor WENDEL confirmando o registro de Kw/h zerado junto a CCEE e garantindo o não faturamento através de estimativa."
         }
       ],
       "createdAt": "2026-04-27T15:04:33.001Z",
-      "updatedAt": "2026-04-27T15:05:15.437Z",
+      "updatedAt": "2026-04-27T15:09:09.093Z",
       "tipo": "cobranca_indevida",
       "titulo": "Registro de consumo zerado entre Coelba e CCEE",
       "uc": "",
