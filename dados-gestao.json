@@ -44,6 +44,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T16:43:52.121Z",
       "updatedAt": "2026-04-27T16:43:52.121Z"
+    },
+    {
+      "id": "CLI1777313340741",
+      "token": "CLI-005",
+      "razaoSocial": "Hiper Ideal (Alphaville)",
+      "cnpj": "",
+      "obs": "Ligação nova Gra",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T18:09:00.741Z",
+      "updatedAt": "2026-04-27T18:09:00.741Z"
     }
   ],
   "ligacoes": [
