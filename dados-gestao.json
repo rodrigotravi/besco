@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:40:06.673Z",
+  "updatedAt": "2026-04-27T15:40:44.142Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -89,7 +89,7 @@
     {
       "id": "cjgssym3pyrmohd4oea",
       "token": "DEM-2026-002",
-      "currentStage": 2,
+      "currentStage": 3,
       "demStageData": [
         {
           "stage": 0,
@@ -105,10 +105,15 @@
           "stage": 2,
           "date": "2026-04-27",
           "notes": ""
+        },
+        {
+          "stage": 3,
+          "date": "2026-04-01",
+          "notes": "Retorno dos relatórios anexos."
         }
       ],
       "createdAt": "2026-04-27T15:39:24.418Z",
-      "updatedAt": "2026-04-27T15:40:06.673Z",
+      "updatedAt": "2026-04-27T15:40:44.142Z",
       "tipo": "memoria_massa",
       "titulo": "Solicitação de memória de massa",
       "uc": "",
