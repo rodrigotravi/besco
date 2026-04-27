@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T18:42:33.632Z",
+  "updatedAt": "2026-04-27T18:42:53.649Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -180,13 +180,13 @@
         }
       ],
       "createdAt": "2026-04-27T18:42:33.632Z",
-      "updatedAt": "2026-04-27T18:42:33.632Z",
+      "updatedAt": "2026-04-27T18:42:53.649Z",
       "tipo": "outro",
       "titulo": "Ajustes na infraestrutura da Subestação",
       "uc": "",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-04-16",
-      "notes": "Ricardo Nixon, responsável pela SE, está em tramitação com equipe de projetos Coelba para alinhar as pendencias estruturais da subestação para adequar as normas da concessionária.",
+      "notes": "Ricardo Nixon, responsável pela SE, está em tramitação com equipe de projetos Coelba para alinhar as pendencias estruturais da subestação e adequar as normas da concessionária.",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
