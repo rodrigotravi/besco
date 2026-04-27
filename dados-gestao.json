@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:19:48.319Z",
+  "updatedAt": "2026-04-27T19:20:35.597Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -135,14 +135,14 @@
         }
       ],
       "createdAt": "2026-04-27T19:18:54.313Z",
-      "updatedAt": "2026-04-27T19:19:48.319Z",
+      "updatedAt": "2026-04-27T19:20:35.596Z",
       "tipo": "alteracao_carga",
       "titulo": "Alteração de carga",
       "uc": "7065914292 e 7069075856",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-03-17",
       "carga": "",
-      "notes": "Alteração de carga de duas ucs cc 7065914292 e cc 7069075856 para viabilizar Eletroposto",
+      "notes": "Alteração de carga de duas ucs cc 7065914292 e cc 7069075856 para viabilizar Eletroposto.",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
