@@ -132,6 +132,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:06:20.427Z",
       "updatedAt": "2026-04-27T20:07:51.834Z"
+    },
+    {
+      "id": "CLI1777320543830",
+      "token": "CLI-014",
+      "razaoSocial": "Gelo da Ilha (Laudenor Silva Gomes)",
+      "cnpj": "31146205000103",
+      "obs": "Solicitação de redução de demanda contratada.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:09:03.830Z",
+      "updatedAt": "2026-04-27T20:09:03.830Z"
     }
   ],
   "ligacoes": [
