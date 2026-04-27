@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T14:50:34.191Z",
+  "updatedAt": "2026-04-27T14:52:45.585Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -21,14 +21,14 @@
         }
       ],
       "createdAt": "2026-04-27T14:45:25.543Z",
-      "updatedAt": "2026-04-27T14:50:34.191Z",
+      "updatedAt": "2026-04-27T14:52:45.585Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação provisória para obras",
       "uc": "",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-03-20",
       "carga": "",
-      "notes": "",
+      "notes": "Uc em obras para ampliação. Necessário gerar ligação provisória junto a Coelba.",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
