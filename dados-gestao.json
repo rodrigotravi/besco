@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:20:35.597Z",
+  "updatedAt": "2026-04-27T19:23:42.177Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -119,7 +119,7 @@
     {
       "id": "9kmp1oiurmsmohkyycp",
       "token": "ALT-2026-001",
-      "currentStage": 1,
+      "currentStage": 2,
       "stageData": [
         {
           "stage": 0,
@@ -132,10 +132,16 @@
           "date": "2026-03-17",
           "protocol": "9102396419",
           "notes": "Gerada nota de estudo de rede pela Coelba"
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-13",
+          "protocol": "9102426507",
+          "notes": "Gerada nova nota de estudo de rede. A nota anterior apresentou pendencias na ART e no Memorial de Calculo."
         }
       ],
       "createdAt": "2026-04-27T19:18:54.313Z",
-      "updatedAt": "2026-04-27T19:20:35.596Z",
+      "updatedAt": "2026-04-27T19:23:42.177Z",
       "tipo": "alteracao_carga",
       "titulo": "Alteração de carga",
       "uc": "7065914292 e 7069075856",
