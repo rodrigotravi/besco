@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:11:08.591Z",
+  "updatedAt": "2026-04-27T20:11:14.254Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -505,6 +505,33 @@
       "consultorTel": "",
       "consultorEmail": "",
       "clienteId": "CLI1777320088710",
+      "protocols": [],
+      "stakeholders": [],
+      "attachments": []
+    },
+    {
+      "id": "xq1r76wr2n8mohmu95a",
+      "token": "DEM-2026-010",
+      "currentStage": 0,
+      "demStageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-08",
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-27T20:11:14.254Z",
+      "updatedAt": "2026-04-27T20:11:14.254Z",
+      "tipo": "alteracao_demanda",
+      "titulo": "Redução de demanda contratada",
+      "uc": "7045061773",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-08",
+      "notes": "Solicitado a consultora SINARA a redução de 120KW para 30KW atendendo ao prazo de 90 dias de acordo resolução art 155.",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "clienteId": "CLI1777320543830",
       "protocols": [],
       "stakeholders": [],
       "attachments": []
