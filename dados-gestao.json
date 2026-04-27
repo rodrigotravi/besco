@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:14:14.972Z",
+  "updatedAt": "2026-04-27T15:17:42.116Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
       "token": "LIG-2026-001",
-      "currentStage": 1,
+      "currentStage": 2,
       "stageData": [
         {
           "stage": 0,
@@ -18,10 +18,16 @@
           "date": "2026-04-01",
           "protocol": "9202000534",
           "notes": "Gerada nota para análise de projeto com prazo de 30 dias para conclusão"
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-01",
+          "protocol": "9102397531",
+          "notes": "Gerada nota de comissionamento junto a Coelba para orçamento de conexão junto ao FORMS (TN 2115517006)"
         }
       ],
       "createdAt": "2026-04-27T14:45:25.543Z",
-      "updatedAt": "2026-04-27T15:00:24.233Z",
+      "updatedAt": "2026-04-27T15:17:42.116Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação provisória para obras",
       "uc": "7013860011",
