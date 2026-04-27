@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:22:43.506Z",
+  "updatedAt": "2026-04-27T20:23:58.890Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -548,7 +548,7 @@
     {
       "id": "ifiyprlx3tkmohn782p",
       "token": "DEM-2026-011",
-      "currentStage": 1,
+      "currentStage": 2,
       "demStageData": [
         {
           "stage": 0,
@@ -559,10 +559,15 @@
           "stage": 1,
           "date": "2026-04-14",
           "notes": "Consultor LUCASFREITAS solicitou do seu colega MATEUSSILVA a análise e o retorno"
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-22",
+          "notes": "Reiteramos retorno do consultor MATEUS SILVA"
         }
       ],
       "createdAt": "2026-04-27T20:21:19.393Z",
-      "updatedAt": "2026-04-27T20:22:43.506Z",
+      "updatedAt": "2026-04-27T20:23:58.890Z",
       "tipo": "outro",
       "titulo": "refaturamento de NF",
       "uc": "7098735261",
