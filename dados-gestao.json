@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:32:19.053Z",
+  "updatedAt": "2026-04-27T19:33:06.933Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -272,7 +272,7 @@
     {
       "id": "qobcajzgtgimohk7erm",
       "token": "DEM-2026-004",
-      "currentStage": 2,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
@@ -283,15 +283,10 @@
           "stage": 1,
           "date": "2026-03-19",
           "notes": "Coelba retornou com a nota gerada: 9102400279 para gerar orçamento do serviço."
-        },
-        {
-          "stage": 2,
-          "date": "2026-04-27",
-          "notes": "Solicitado a Coelba retorno do levantamento de campo para liberação do orçamento da nota 9102413505"
         }
       ],
       "createdAt": "2026-04-27T18:57:29.218Z",
-      "updatedAt": "2026-04-27T19:07:17.060Z",
+      "updatedAt": "2026-04-27T19:33:06.933Z",
       "tipo": "outro",
       "titulo": "Relocação de rede",
       "uc": "",
