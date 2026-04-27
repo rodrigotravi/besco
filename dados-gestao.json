@@ -1,21 +1,27 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T14:47:05.555Z",
+  "updatedAt": "2026-04-27T14:48:47.399Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
       "token": "LIG-2026-001",
-      "currentStage": 0,
+      "currentStage": 1,
       "stageData": [
         {
           "stage": 0,
           "date": "2026-03-20",
           "protocol": null,
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-01",
+          "protocol": "9202000534",
+          "notes": "Gerada nota para análise de projeto com prazo de 30 dias para conclusão"
         }
       ],
       "createdAt": "2026-04-27T14:45:25.543Z",
-      "updatedAt": "2026-04-27T14:47:05.555Z",
+      "updatedAt": "2026-04-27T14:48:47.399Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação provisória para obras",
       "uc": "",
