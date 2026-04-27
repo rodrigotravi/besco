@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:41:01.454Z",
+  "updatedAt": "2026-04-27T19:41:55.422Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -341,7 +341,7 @@
     {
       "id": "825bcar26i2mohlpoqo",
       "token": "DEM-2026-006",
-      "currentStage": 1,
+      "currentStage": 2,
       "demStageData": [
         {
           "stage": 0,
@@ -352,10 +352,15 @@
           "stage": 1,
           "date": "2026-04-01",
           "notes": "Consultor WENDEL retornou informando que estava sob análise de setor responsável pelas cobranças corporativas."
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-16",
+          "notes": "Reiteramos contato com o consultor Coelba para um posicionamento."
         }
       ],
       "createdAt": "2026-04-27T19:39:41.568Z",
-      "updatedAt": "2026-04-27T19:41:01.454Z",
+      "updatedAt": "2026-04-27T19:41:55.422Z",
       "tipo": "cobranca_indevida",
       "titulo": "Reclamação de cobrança indevida",
       "uc": "7076553160",
