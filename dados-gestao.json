@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:18:54.313Z",
+  "updatedAt": "2026-04-27T19:19:48.319Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -119,17 +119,23 @@
     {
       "id": "9kmp1oiurmsmohkyycp",
       "token": "ALT-2026-001",
-      "currentStage": 0,
+      "currentStage": 1,
       "stageData": [
         {
           "stage": 0,
           "date": "2026-03-17",
           "protocol": null,
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-03-17",
+          "protocol": "9102396419",
+          "notes": "Gerada nota de estudo de rede pela Coelba"
         }
       ],
       "createdAt": "2026-04-27T19:18:54.313Z",
-      "updatedAt": "2026-04-27T19:18:54.313Z",
+      "updatedAt": "2026-04-27T19:19:48.319Z",
       "tipo": "alteracao_carga",
       "titulo": "Alteração de carga",
       "uc": "7065914292 e 7069075856",
