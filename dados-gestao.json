@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:39:41.568Z",
+  "updatedAt": "2026-04-27T19:40:00.218Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -350,12 +350,12 @@
         }
       ],
       "createdAt": "2026-04-27T19:39:41.568Z",
-      "updatedAt": "2026-04-27T19:39:41.568Z",
+      "updatedAt": "2026-04-27T19:40:00.218Z",
       "tipo": "cobranca_indevida",
       "titulo": "Reclamação de cobrança indevida",
       "uc": "7076553160",
       "distribuidora": "Coelba / Neoenergia Bahia",
-      "emailDate": "2026-04-27",
+      "emailDate": "2026-03-27",
       "notes": "Uc vem recebendo cobranças indevidas referente tramitação concluída desde 2024 já solucionada por meio de reclamação junto a ANEEL.",
       "consultorNome": "",
       "consultorTel": "",
