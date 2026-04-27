@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:13:04.274Z",
+  "updatedAt": "2026-04-27T15:13:46.828Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -97,12 +97,12 @@
       "id": "CLI1777300983370",
       "token": "CLI-002",
       "razaoSocial": "Hiper Ideal (Piatã)",
-      "cnpj": "",
+      "cnpj": "02212937000741",
       "obs": "Ligação provisória para obras de ampliação",
       "ucs": [],
       "contatos": [],
       "createdAt": "2026-04-27T14:43:03.370Z",
-      "updatedAt": "2026-04-27T15:13:04.274Z"
+      "updatedAt": "2026-04-27T15:13:46.828Z"
     }
   ]
 }
