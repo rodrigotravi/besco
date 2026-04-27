@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T18:37:43.212Z",
+  "updatedAt": "2026-04-27T18:39:59.689Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -45,7 +45,7 @@
     {
       "id": "eyg2oz9094mohjfovc",
       "token": "LIG-2026-002",
-      "currentStage": 1,
+      "currentStage": 2,
       "stageData": [
         {
           "stage": 0,
@@ -58,10 +58,16 @@
           "date": "2026-04-06",
           "protocol": "9201971137",
           "notes": "Solicitada AS BIULT do projeto que prevê 4 cubiculos (disjuntor)"
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-10",
+          "protocol": "9102411152",
+          "notes": "Incorporação gerou nota de comissionamento para abrir orçamento de conexão via FORMS"
         }
       ],
       "createdAt": "2026-04-27T18:35:55.944Z",
-      "updatedAt": "2026-04-27T18:37:43.212Z",
+      "updatedAt": "2026-04-27T18:39:59.689Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação nova",
       "uc": "",
