@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T18:47:27.931Z",
+  "updatedAt": "2026-04-27T18:49:34.796Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -85,17 +85,23 @@
     {
       "id": "csoaaz26wkdmohjuit7",
       "token": "LIG-2026-003",
-      "currentStage": 0,
+      "currentStage": 1,
       "stageData": [
         {
           "stage": 0,
           "date": "2026-04-01",
           "protocol": null,
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-01",
+          "protocol": "9201991559",
+          "notes": "Gerada nota para análise de projeto com prazo de 30 dias e, após aprovação gerar nota de comissionamento no FORMS através do portal neoenergia"
         }
       ],
       "createdAt": "2026-04-27T18:47:27.931Z",
-      "updatedAt": "2026-04-27T18:47:27.931Z",
+      "updatedAt": "2026-04-27T18:49:34.796Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação nova",
       "uc": "",
