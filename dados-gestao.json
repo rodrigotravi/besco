@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:55:31.467Z",
+  "updatedAt": "2026-04-27T19:57:25.872Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -425,16 +425,21 @@
     {
       "id": "btg9yp7ilqvmohma1oq",
       "token": "DEM-2026-008",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-04-14",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-22",
+          "notes": "Coelba nos retornou solicitando intervenção do consultor LUCAS VIRGOLINO mencionando a nota 9201997229 e RICARDO SENA para orçamento de conexão no FORMS através do portal Neoenergia."
         }
       ],
       "createdAt": "2026-04-27T19:55:31.466Z",
-      "updatedAt": "2026-04-27T19:55:31.466Z",
+      "updatedAt": "2026-04-27T19:57:25.872Z",
       "tipo": "alteracao_demanda",
       "titulo": "Aumento de demanda contratada (com obras de reforço de rede para SE de 69KV)",
       "uc": "70009617",
