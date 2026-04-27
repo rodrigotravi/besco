@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:04:33.001Z",
+  "updatedAt": "2026-04-27T15:05:15.437Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -50,13 +50,13 @@
         }
       ],
       "createdAt": "2026-04-27T15:04:33.001Z",
-      "updatedAt": "2026-04-27T15:04:33.001Z",
+      "updatedAt": "2026-04-27T15:05:15.437Z",
       "tipo": "cobranca_indevida",
       "titulo": "Registro de consumo zerado entre Coelba e CCEE",
       "uc": "",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-04-06",
-      "notes": "Solicitado ao consultor Coelba WENDEL verificar status de ''dados faltantes'' junto a CCEE em razão de não haver Consumo Ativo na UC. necessário registro de Kw/h zerado.",
+      "notes": "Solicitado ao consultor Coelba WENDEL verificar status de ''dados faltantes'' junto a CCEE em razão de não haver Consumo Ativo na UC. necessário registro de Kw/h zerado para não haver cobrança por estimativa de consumo.",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
