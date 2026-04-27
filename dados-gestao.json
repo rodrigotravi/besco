@@ -66,6 +66,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T18:53:52.863Z",
       "updatedAt": "2026-04-27T18:53:52.863Z"
+    },
+    {
+      "id": "CLI1777318017891",
+      "token": "CLI-008",
+      "razaoSocial": "Gelo Garcia",
+      "cnpj": "",
+      "obs": "Solicitação de poda de galhos de arvores que tocam a rede da Uc.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:26:57.891Z",
+      "updatedAt": "2026-04-27T19:26:57.891Z"
     }
   ],
   "ligacoes": [
