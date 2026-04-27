@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:09:20.032Z",
+  "updatedAt": "2026-04-27T15:09:50.140Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -41,7 +41,7 @@
     {
       "id": "j7t89w2mjcmohbvund",
       "token": "DEM-2026-001",
-      "currentStage": 2,
+      "currentStage": 3,
       "demStageData": [
         {
           "stage": 0,
@@ -57,10 +57,15 @@
           "stage": 2,
           "date": "2026-04-27",
           "notes": ""
+        },
+        {
+          "stage": 3,
+          "date": "2026-04-15",
+          "notes": "concluído."
         }
       ],
       "createdAt": "2026-04-27T15:04:33.001Z",
-      "updatedAt": "2026-04-27T15:09:20.032Z",
+      "updatedAt": "2026-04-27T15:09:50.140Z",
       "tipo": "cobranca_indevida",
       "titulo": "Registro de consumo zerado entre Coelba e CCEE",
       "uc": "",
