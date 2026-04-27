@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T15:39:59.880Z",
+  "updatedAt": "2026-04-27T15:40:06.673Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -89,7 +89,7 @@
     {
       "id": "cjgssym3pyrmohd4oea",
       "token": "DEM-2026-002",
-      "currentStage": 1,
+      "currentStage": 2,
       "demStageData": [
         {
           "stage": 0,
@@ -100,10 +100,15 @@
           "stage": 1,
           "date": "2026-04-27",
           "notes": ""
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-27",
+          "notes": ""
         }
       ],
       "createdAt": "2026-04-27T15:39:24.418Z",
-      "updatedAt": "2026-04-27T15:39:59.880Z",
+      "updatedAt": "2026-04-27T15:40:06.673Z",
       "tipo": "memoria_massa",
       "titulo": "Solicitação de memória de massa",
       "uc": "",
