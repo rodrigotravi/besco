@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:28:19.152Z",
+  "updatedAt": "2026-04-27T20:29:07.520Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -585,16 +585,21 @@
     {
       "id": "n1i4skt8oyjmohng7yo",
       "token": "DEM-2026-012",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-04-13",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-16",
+          "notes": "Consultora SINARA solicitou providencias do seu colega consultor TIAGONAVARRO"
         }
       ],
       "createdAt": "2026-04-27T20:28:19.152Z",
-      "updatedAt": "2026-04-27T20:28:19.152Z",
+      "updatedAt": "2026-04-27T20:29:07.520Z",
       "tipo": "memoria_massa",
       "titulo": "Dados de curto-circuito",
       "uc": "7097170864",
