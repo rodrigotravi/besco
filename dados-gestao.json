@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:11:14.254Z",
+  "updatedAt": "2026-04-27T20:12:30.646Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -169,14 +169,14 @@
         }
       ],
       "createdAt": "2026-04-27T20:11:08.591Z",
-      "updatedAt": "2026-04-27T20:11:08.591Z",
+      "updatedAt": "2026-04-27T20:12:30.646Z",
       "tipo": "alteracao_carga",
       "titulo": "PROJETO ELÉTRICO EXTENSÃO DE REDE AO POSTO DE TRANSFORMAÇÃO PARTICULAR",
       "uc": "10/1540147-4",
       "distribuidora": "Energisa Mato Grosso do Sul",
       "emailDate": "2026-04-24",
       "carga": "135",
-      "notes": "",
+      "notes": "FOI SOLICITADO O AUMENTO DE DEMANDA PARA UNIDADE DO CENTRO, CLIENTE A R S SUPERMERCADOS. \nPARA PROSSEGUIR COM A SOLICITAÇÃO ENERGISA SOLICITOU \" Carta de resposta à análise de viabilidade/estudo de conexão para atendimento do aumento de potência e demanda\"",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
