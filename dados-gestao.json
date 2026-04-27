@@ -1,6 +1,117 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T19:50:31.155Z",
+  "clientes": [
+    {
+      "id": "CLI1777318017891",
+      "token": "CLI-008",
+      "razaoSocial": "Gelo Garcia",
+      "cnpj": "",
+      "obs": "Solicitação de poda de galhos de arvores que tocam a rede da Uc.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:26:57.891Z",
+      "updatedAt": "2026-04-27T19:26:57.891Z"
+    },
+    {
+      "id": "CLI1777308232121",
+      "token": "CLI-004",
+      "razaoSocial": "Hiper Ideal (Alphaville)",
+      "cnpj": "",
+      "obs": "Ligação nova",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T16:43:52.121Z",
+      "updatedAt": "2026-04-27T18:45:25.367Z"
+    },
+    {
+      "id": "CLI1777315518108",
+      "token": "CLI-005",
+      "razaoSocial": "Hiper Ideal (Aquarius)",
+      "cnpj": "02212937000156",
+      "obs": "Ligação nova",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T18:45:18.108Z",
+      "updatedAt": "2026-04-27T18:45:44.720Z"
+    },
+    {
+      "id": "CLI1777300983370",
+      "token": "CLI-002",
+      "razaoSocial": "Hiper Ideal (Piatã)",
+      "cnpj": "02212937000741",
+      "obs": "Ligação provisória para obras de ampliação",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T14:43:03.370Z",
+      "updatedAt": "2026-04-27T15:14:14.972Z"
+    },
+    {
+      "id": "CLI1777304161910",
+      "token": "CLI-003",
+      "razaoSocial": "Hiper Ideal (Portão)",
+      "cnpj": "",
+      "obs": "Solicitação de relatório memória de massa",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T15:36:01.910Z",
+      "updatedAt": "2026-04-27T15:36:01.910Z"
+    },
+    {
+      "id": "CLI1777317164661",
+      "token": "CLI-007",
+      "razaoSocial": "JSM Combustíveis",
+      "cnpj": "",
+      "obs": "Alteração de carga de duas ucs, cc 7065914292 e cc 7069075856 para viabilizar Eletroposto",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:12:44.661Z",
+      "updatedAt": "2026-04-27T19:13:53.164Z"
+    },
+    {
+      "id": "CLI1777318666907",
+      "token": "CLI-009",
+      "razaoSocial": "Novo Mix (Canabrava)",
+      "cnpj": "",
+      "obs": "Reclamação de cobrança indevida",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:37:46.907Z",
+      "updatedAt": "2026-04-27T19:37:46.907Z"
+    },
+    {
+      "id": "CLI1777319173404",
+      "token": "CLI-010",
+      "razaoSocial": "Posto Gasoto",
+      "cnpj": "06198737000147",
+      "obs": "Solicitação de aumento de demanda contratada (sem obras)",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:46:13.404Z",
+      "updatedAt": "2026-04-27T19:46:13.404Z"
+    },
+    {
+      "id": "CLI1777316032863",
+      "token": "CLI-006",
+      "razaoSocial": "Shopping Mall (PF)",
+      "cnpj": "",
+      "obs": "Relocação de rede",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T18:53:52.863Z",
+      "updatedAt": "2026-04-27T18:53:52.863Z"
+    },
+    {
+      "id": "CLI1777319591234",
+      "token": "CLI-011",
+      "razaoSocial": "Pedreira Parafuso",
+      "cnpj": "",
+      "obs": "Aumento de demanda (com obras de reforço para SE de 69KV)",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:53:11.234Z",
+      "updatedAt": "2026-04-27T19:53:11.234Z"
+    }
+  ],
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -421,107 +532,6 @@
       "protocols": [],
       "stakeholders": [],
       "attachments": []
-    }
-  ],
-  "clientes": [
-    {
-      "id": "CLI1777318017891",
-      "token": "CLI-008",
-      "razaoSocial": "Gelo Garcia",
-      "cnpj": "",
-      "obs": "Solicitação de poda de galhos de arvores que tocam a rede da Uc.",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:26:57.891Z",
-      "updatedAt": "2026-04-27T19:26:57.891Z"
-    },
-    {
-      "id": "CLI1777308232121",
-      "token": "CLI-004",
-      "razaoSocial": "Hiper Ideal (Alphaville)",
-      "cnpj": "",
-      "obs": "Ligação nova",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T16:43:52.121Z",
-      "updatedAt": "2026-04-27T18:45:25.367Z"
-    },
-    {
-      "id": "CLI1777315518108",
-      "token": "CLI-005",
-      "razaoSocial": "Hiper Ideal (Aquarius)",
-      "cnpj": "02212937000156",
-      "obs": "Ligação nova",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T18:45:18.108Z",
-      "updatedAt": "2026-04-27T18:45:44.720Z"
-    },
-    {
-      "id": "CLI1777300983370",
-      "token": "CLI-002",
-      "razaoSocial": "Hiper Ideal (Piatã)",
-      "cnpj": "02212937000741",
-      "obs": "Ligação provisória para obras de ampliação",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T14:43:03.370Z",
-      "updatedAt": "2026-04-27T15:14:14.972Z"
-    },
-    {
-      "id": "CLI1777304161910",
-      "token": "CLI-003",
-      "razaoSocial": "Hiper Ideal (Portão)",
-      "cnpj": "",
-      "obs": "Solicitação de relatório memória de massa",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T15:36:01.910Z",
-      "updatedAt": "2026-04-27T15:36:01.910Z"
-    },
-    {
-      "id": "CLI1777317164661",
-      "token": "CLI-007",
-      "razaoSocial": "JSM Combustíveis",
-      "cnpj": "",
-      "obs": "Alteração de carga de duas ucs, cc 7065914292 e cc 7069075856 para viabilizar Eletroposto",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:12:44.661Z",
-      "updatedAt": "2026-04-27T19:13:53.164Z"
-    },
-    {
-      "id": "CLI1777318666907",
-      "token": "CLI-009",
-      "razaoSocial": "Novo Mix (Canabrava)",
-      "cnpj": "",
-      "obs": "Reclamação de cobrança indevida",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:37:46.907Z",
-      "updatedAt": "2026-04-27T19:37:46.907Z"
-    },
-    {
-      "id": "CLI1777319173404",
-      "token": "CLI-010",
-      "razaoSocial": "Posto Gasoto",
-      "cnpj": "06198737000147",
-      "obs": "Solicitação de aumento de demanda contratada (sem obras)",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:46:13.404Z",
-      "updatedAt": "2026-04-27T19:46:13.404Z"
-    },
-    {
-      "id": "CLI1777316032863",
-      "token": "CLI-006",
-      "razaoSocial": "Shopping Mall (PF)",
-      "cnpj": "",
-      "obs": "Relocação de rede",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T18:53:52.863Z",
-      "updatedAt": "2026-04-27T18:53:52.863Z"
     }
   ]
 }
