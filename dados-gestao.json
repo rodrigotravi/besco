@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-28T13:17:45.234Z",
+  "updatedAt": "2026-04-28T17:14:59.295Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
       "token": "LIG-2026-001",
-      "currentStage": 2,
+      "currentStage": 3,
       "stageData": [
         {
           "stage": 0,
@@ -24,10 +24,16 @@
           "date": "2026-04-01",
           "protocol": "9102397531",
           "notes": "Gerada nota de comissionamento junto a Coelba para orçamento de conexão junto ao FORMS (TN 2115517006)"
+        },
+        {
+          "stage": 3,
+          "date": "2026-04-28",
+          "protocol": "9102397531",
+          "notes": "Análise de Projeto aprovada pela nota 9202000534. Próxima etapa gerar orçamento de conexão no portal neoenergia (Forms) através da nota 9102397531 TN 2115517006"
         }
       ],
       "createdAt": "2026-04-27T14:45:25.543Z",
-      "updatedAt": "2026-04-27T15:17:42.116Z",
+      "updatedAt": "2026-04-28T17:14:59.295Z",
       "tipo": "nova_ligacao",
       "titulo": "Ligação provisória para obras",
       "uc": "7013860011",
