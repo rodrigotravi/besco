@@ -1,6 +1,183 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-28T12:22:43.371Z",
+  "clientes": [
+    {
+      "id": "CLI1777320380427",
+      "token": "CLI-013",
+      "razaoSocial": "A R S SUPERMERCADOS",
+      "cnpj": "20.335.148/0001-94",
+      "obs": "",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:06:20.427Z",
+      "updatedAt": "2026-04-27T20:07:51.834Z"
+    },
+    {
+      "id": "CLI1777320543830",
+      "token": "CLI-014",
+      "razaoSocial": "Gelo da Ilha (Laudenor Silva Gomes)",
+      "cnpj": "31146205000103",
+      "obs": "Solicitação de redução de demanda contratada.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:09:03.830Z",
+      "updatedAt": "2026-04-27T20:09:03.830Z"
+    },
+    {
+      "id": "CLI1777318017891",
+      "token": "CLI-008",
+      "razaoSocial": "Gelo Garcia",
+      "cnpj": "",
+      "obs": "Solicitação de poda de galhos de arvores que tocam a rede da Uc.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:26:57.891Z",
+      "updatedAt": "2026-04-27T19:26:57.891Z"
+    },
+    {
+      "id": "CLI1777308232121",
+      "token": "CLI-004",
+      "razaoSocial": "Hiper Ideal (Alphaville)",
+      "cnpj": "",
+      "obs": "Ligação nova",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T16:43:52.121Z",
+      "updatedAt": "2026-04-27T18:45:25.367Z"
+    },
+    {
+      "id": "CLI1777315518108",
+      "token": "CLI-005",
+      "razaoSocial": "Hiper Ideal (Aquarius)",
+      "cnpj": "02212937000156",
+      "obs": "Ligação nova",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T18:45:18.108Z",
+      "updatedAt": "2026-04-27T18:45:44.720Z"
+    },
+    {
+      "id": "CLI1777300983370",
+      "token": "CLI-002",
+      "razaoSocial": "Hiper Ideal (Piatã)",
+      "cnpj": "02212937000741",
+      "obs": "Ligação provisória para obras de ampliação",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T14:43:03.370Z",
+      "updatedAt": "2026-04-27T15:14:14.972Z"
+    },
+    {
+      "id": "CLI1777304161910",
+      "token": "CLI-003",
+      "razaoSocial": "Hiper Ideal (Portão)",
+      "cnpj": "",
+      "obs": "Solicitação de relatório memória de massa",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T15:36:01.910Z",
+      "updatedAt": "2026-04-27T15:36:01.910Z"
+    },
+    {
+      "id": "CLI1777321559949",
+      "token": "CLI-016",
+      "razaoSocial": "Hospital Alagoinhas",
+      "cnpj": "",
+      "obs": "Solicitação de dados de curto-circuito",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:25:59.949Z",
+      "updatedAt": "2026-04-27T20:25:59.949Z"
+    },
+    {
+      "id": "CLI1777317164661",
+      "token": "CLI-007",
+      "razaoSocial": "JSM Combustíveis",
+      "cnpj": "",
+      "obs": "Alteração de carga de duas ucs, cc 7065914292 e cc 7069075856 para viabilizar Eletroposto",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:12:44.661Z",
+      "updatedAt": "2026-04-27T19:13:53.164Z"
+    },
+    {
+      "id": "CLI1777318666907",
+      "token": "CLI-009",
+      "razaoSocial": "Novo Mix (Canabrava)",
+      "cnpj": "",
+      "obs": "Reclamação de cobrança indevida",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:37:46.907Z",
+      "updatedAt": "2026-04-27T19:37:46.907Z"
+    },
+    {
+      "id": "CLI1777319591234",
+      "token": "CLI-011",
+      "razaoSocial": "Pedreira Parafuso",
+      "cnpj": "",
+      "obs": "Aumento de demanda (com obras de reforço para SE de 69KV)",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:53:11.234Z",
+      "updatedAt": "2026-04-27T19:53:11.234Z"
+    },
+    {
+      "id": "CLI1777319173404",
+      "token": "CLI-010",
+      "razaoSocial": "Posto Gasoto",
+      "cnpj": "06198737000147",
+      "obs": "Solicitação de aumento de demanda contratada (sem obras)",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T19:46:13.404Z",
+      "updatedAt": "2026-04-27T19:46:13.404Z"
+    },
+    {
+      "id": "CLI1777316032863",
+      "token": "CLI-006",
+      "razaoSocial": "Shopping Mall (PF)",
+      "cnpj": "",
+      "obs": "Relocação de rede",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T18:53:52.863Z",
+      "updatedAt": "2026-04-27T18:53:52.863Z"
+    },
+    {
+      "id": "CLI1777320088710",
+      "token": "CLI-012",
+      "razaoSocial": "Supermercado Compre certo (Ceará)",
+      "cnpj": "10386811000126",
+      "obs": "Solicitação dos indicadores de continuidade DIC/FIC",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:01:28.710Z",
+      "updatedAt": "2026-04-27T20:01:28.710Z"
+    },
+    {
+      "id": "CLI1777321151844",
+      "token": "CLI-015",
+      "razaoSocial": "UC Geradora - Mirangaba",
+      "cnpj": "43947272000106",
+      "obs": "Processo de troca de titularidade que foi disparada uma fatura antes do rateio que ocasionou acumulo de crédito. solicitado refaturamento da NF para distribuição dos créditos na nova UC.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-27T20:19:11.844Z",
+      "updatedAt": "2026-04-27T20:19:11.844Z"
+    },
+    {
+      "id": "CLI1777381811073",
+      "token": "CLI-017",
+      "razaoSocial": "Jaguar Holding (UFV)",
+      "cnpj": "27390545000108",
+      "obs": "Realizada troca de titularidade para nova cc 7096222933 e a Coelba não vem reconhecendo essa nova cc como geradora. Solicitamos a correção do cadastro e regularização dos créditos.",
+      "ucs": [],
+      "contatos": [],
+      "createdAt": "2026-04-28T13:10:11.073Z",
+      "updatedAt": "2026-04-28T13:10:11.073Z"
+    }
+  ],
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -618,173 +795,6 @@
       "protocols": [],
       "stakeholders": [],
       "attachments": []
-    }
-  ],
-  "clientes": [
-    {
-      "id": "CLI1777320380427",
-      "token": "CLI-013",
-      "razaoSocial": "A R S SUPERMERCADOS",
-      "cnpj": "20.335.148/0001-94",
-      "obs": "",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T20:06:20.427Z",
-      "updatedAt": "2026-04-27T20:07:51.834Z"
-    },
-    {
-      "id": "CLI1777320543830",
-      "token": "CLI-014",
-      "razaoSocial": "Gelo da Ilha (Laudenor Silva Gomes)",
-      "cnpj": "31146205000103",
-      "obs": "Solicitação de redução de demanda contratada.",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T20:09:03.830Z",
-      "updatedAt": "2026-04-27T20:09:03.830Z"
-    },
-    {
-      "id": "CLI1777318017891",
-      "token": "CLI-008",
-      "razaoSocial": "Gelo Garcia",
-      "cnpj": "",
-      "obs": "Solicitação de poda de galhos de arvores que tocam a rede da Uc.",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:26:57.891Z",
-      "updatedAt": "2026-04-27T19:26:57.891Z"
-    },
-    {
-      "id": "CLI1777308232121",
-      "token": "CLI-004",
-      "razaoSocial": "Hiper Ideal (Alphaville)",
-      "cnpj": "",
-      "obs": "Ligação nova",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T16:43:52.121Z",
-      "updatedAt": "2026-04-27T18:45:25.367Z"
-    },
-    {
-      "id": "CLI1777315518108",
-      "token": "CLI-005",
-      "razaoSocial": "Hiper Ideal (Aquarius)",
-      "cnpj": "02212937000156",
-      "obs": "Ligação nova",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T18:45:18.108Z",
-      "updatedAt": "2026-04-27T18:45:44.720Z"
-    },
-    {
-      "id": "CLI1777300983370",
-      "token": "CLI-002",
-      "razaoSocial": "Hiper Ideal (Piatã)",
-      "cnpj": "02212937000741",
-      "obs": "Ligação provisória para obras de ampliação",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T14:43:03.370Z",
-      "updatedAt": "2026-04-27T15:14:14.972Z"
-    },
-    {
-      "id": "CLI1777304161910",
-      "token": "CLI-003",
-      "razaoSocial": "Hiper Ideal (Portão)",
-      "cnpj": "",
-      "obs": "Solicitação de relatório memória de massa",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T15:36:01.910Z",
-      "updatedAt": "2026-04-27T15:36:01.910Z"
-    },
-    {
-      "id": "CLI1777321559949",
-      "token": "CLI-016",
-      "razaoSocial": "Hospital Alagoinhas",
-      "cnpj": "",
-      "obs": "Solicitação de dados de curto-circuito",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T20:25:59.949Z",
-      "updatedAt": "2026-04-27T20:25:59.949Z"
-    },
-    {
-      "id": "CLI1777317164661",
-      "token": "CLI-007",
-      "razaoSocial": "JSM Combustíveis",
-      "cnpj": "",
-      "obs": "Alteração de carga de duas ucs, cc 7065914292 e cc 7069075856 para viabilizar Eletroposto",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:12:44.661Z",
-      "updatedAt": "2026-04-27T19:13:53.164Z"
-    },
-    {
-      "id": "CLI1777318666907",
-      "token": "CLI-009",
-      "razaoSocial": "Novo Mix (Canabrava)",
-      "cnpj": "",
-      "obs": "Reclamação de cobrança indevida",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:37:46.907Z",
-      "updatedAt": "2026-04-27T19:37:46.907Z"
-    },
-    {
-      "id": "CLI1777319591234",
-      "token": "CLI-011",
-      "razaoSocial": "Pedreira Parafuso",
-      "cnpj": "",
-      "obs": "Aumento de demanda (com obras de reforço para SE de 69KV)",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:53:11.234Z",
-      "updatedAt": "2026-04-27T19:53:11.234Z"
-    },
-    {
-      "id": "CLI1777319173404",
-      "token": "CLI-010",
-      "razaoSocial": "Posto Gasoto",
-      "cnpj": "06198737000147",
-      "obs": "Solicitação de aumento de demanda contratada (sem obras)",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T19:46:13.404Z",
-      "updatedAt": "2026-04-27T19:46:13.404Z"
-    },
-    {
-      "id": "CLI1777316032863",
-      "token": "CLI-006",
-      "razaoSocial": "Shopping Mall (PF)",
-      "cnpj": "",
-      "obs": "Relocação de rede",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T18:53:52.863Z",
-      "updatedAt": "2026-04-27T18:53:52.863Z"
-    },
-    {
-      "id": "CLI1777320088710",
-      "token": "CLI-012",
-      "razaoSocial": "Supermercado Compre certo (Ceará)",
-      "cnpj": "10386811000126",
-      "obs": "Solicitação dos indicadores de continuidade DIC/FIC",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T20:01:28.710Z",
-      "updatedAt": "2026-04-27T20:01:28.710Z"
-    },
-    {
-      "id": "CLI1777321151844",
-      "token": "CLI-015",
-      "razaoSocial": "UC Geradora - Mirangaba",
-      "cnpj": "43947272000106",
-      "obs": "Processo de troca de titularidade que foi disparada uma fatura antes do rateio que ocasionou acumulo de crédito. solicitado refaturamento da NF para distribuição dos créditos na nova UC.",
-      "ucs": [],
-      "contatos": [],
-      "createdAt": "2026-04-27T20:19:11.844Z",
-      "updatedAt": "2026-04-27T20:19:11.844Z"
     }
   ]
 }
