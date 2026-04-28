@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-28T13:15:11.614Z",
+  "updatedAt": "2026-04-28T13:16:10.652Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -641,13 +641,13 @@
         }
       ],
       "createdAt": "2026-04-28T13:12:17.856Z",
-      "updatedAt": "2026-04-28T13:15:11.614Z",
+      "updatedAt": "2026-04-28T13:16:10.652Z",
       "tipo": "outro",
       "titulo": "correção do cadastro da nova UC como geradora",
       "uc": "7096222933",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-04-07",
-      "notes": "acionado consultor LUCAS FREITAS que sugeriu a resolução em uma das agencias de atendimento por tratar-se de Uc em baixa tensão.",
+      "notes": "acionado consultor LUCAS FREITAS que sugeriu a resolução em uma das agencias de atendimento por tratar-se de Uc em baixa tensão. aberta reclamação: 700002484682",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
