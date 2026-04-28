@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-27T20:30:51.974Z",
+  "updatedAt": "2026-04-28T12:22:43.371Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -604,13 +604,13 @@
         }
       ],
       "createdAt": "2026-04-27T20:28:19.152Z",
-      "updatedAt": "2026-04-27T20:30:51.974Z",
+      "updatedAt": "2026-04-28T12:22:43.371Z",
       "tipo": "memoria_massa",
       "titulo": "Dados de curto-circuito",
       "uc": "7097170864",
       "distribuidora": "Coelba / Neoenergia Bahia",
       "emailDate": "2026-04-13",
-      "notes": "Solicitado a consultora SINARA os dados de curto-circuito",
+      "notes": "Solicitado a consultora SINARA os dados de curto-circuito e retransmitido ao consultor TIAGO NAVARRO (responsável por gestão em ucs públicas).",
       "consultorNome": "",
       "consultorTel": "",
       "consultorEmail": "",
