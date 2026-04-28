@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-28T13:13:20.644Z",
+  "updatedAt": "2026-04-28T13:15:11.614Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -622,7 +622,7 @@
     {
       "id": "adq9nnhpejbmoinbcg0",
       "token": "DEM-2026-013",
-      "currentStage": 1,
+      "currentStage": 2,
       "demStageData": [
         {
           "stage": 0,
@@ -633,10 +633,15 @@
           "stage": 1,
           "date": "2026-04-14",
           "notes": "Consultor Coelba LUCAS FREITAS sugeriu resolução em uma agencia de atendimento por trata-se de Uc em baixa tensão."
+        },
+        {
+          "stage": 2,
+          "date": "2026-04-28",
+          "notes": "Reforçamos que por trata-se de UFV a agencia de atendimento não intercedem em crédito de energia e compensação incorreta. Reiterado o pedido ao consultor LUCAS FREITAS."
         }
       ],
       "createdAt": "2026-04-28T13:12:17.856Z",
-      "updatedAt": "2026-04-28T13:13:20.644Z",
+      "updatedAt": "2026-04-28T13:15:11.614Z",
       "tipo": "outro",
       "titulo": "correção do cadastro da nova UC como geradora",
       "uc": "7096222933",
