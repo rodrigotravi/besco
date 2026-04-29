@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-28T17:14:59.295Z",
+  "updatedAt": "2026-04-29T12:42:41.624Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -288,16 +288,21 @@
     {
       "id": "66xk1mzgirwmohjo7q8",
       "token": "DEM-2026-003",
-      "currentStage": 0,
+      "currentStage": 1,
       "demStageData": [
         {
           "stage": 0,
           "date": "2026-04-16",
           "notes": ""
+        },
+        {
+          "stage": 1,
+          "date": "2026-04-24",
+          "notes": "Reunião na Coelba com NIXON e equipe de projetos para alinhar as adequações da estrutura da subestação para aprovação da concessionária."
         }
       ],
       "createdAt": "2026-04-27T18:42:33.632Z",
-      "updatedAt": "2026-04-27T18:42:53.649Z",
+      "updatedAt": "2026-04-29T12:42:41.624Z",
       "tipo": "outro",
       "titulo": "Ajustes na infraestrutura da Subestação",
       "uc": "",
