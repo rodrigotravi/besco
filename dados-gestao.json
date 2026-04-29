@@ -9,6 +9,15 @@
       "obs": "",
       "createdAt": "2026-04-29T16:27:41.781Z",
       "updatedAt": "2026-04-29T16:27:41.781Z"
+    },
+    {
+      "id": "GRP1777480175476",
+      "nome": "REDE MIX",
+      "cnpjMaster": "",
+      "segmento": "VAREJO",
+      "obs": "",
+      "createdAt": "2026-04-29T16:29:35.476Z",
+      "updatedAt": "2026-04-29T16:29:35.476Z"
     }
   ],
   "clientes": [
