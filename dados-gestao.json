@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T13:59:02.787Z",
+  "updatedAt": "2026-04-30T13:59:05.659Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -677,6 +677,33 @@
       "protocols": [],
       "stakeholders": [],
       "attachments": []
+    },
+    {
+      "id": "hw9owae8vn8moljv8ai",
+      "token": "DEM-2026-014",
+      "currentStage": 0,
+      "demStageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-29",
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-30T13:59:05.659Z",
+      "updatedAt": "2026-04-30T13:59:05.659Z",
+      "tipo": "outro",
+      "titulo": "Solicitação de Níveis de tensão no ponto de entrega",
+      "uc": "7065380824",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-29",
+      "notes": "Solicitação ao consultor Coelba WENDEL os dados de registros dos níveis de tensão no ponto de entrega (período de 1 ano) e, caso não exista, solicitamos instalação do equipamento de medição para relatório técnico.",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "clienteId": "uocj2x1otchmoljv62r",
+      "protocols": [],
+      "stakeholders": [],
+      "attachments": []
     }
   ],
   "clientes": [
@@ -736,6 +763,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T18:45:18.108Z",
       "updatedAt": "2026-04-27T18:45:44.720Z"
+    },
+    {
+      "id": "uocj2x1otchmoljv62r",
+      "token": "CLI-017",
+      "createdAt": "2026-04-30T13:59:02.787Z",
+      "updatedAt": "2026-04-30T13:59:02.787Z",
+      "razaoSocial": "Hiper Ideal (Guarajuba)",
+      "cnpj": "",
+      "obs": "Solicitação ao consultor Coelba WENDEL os dados de registros dos níveis de tensão no ponto de entrega (período de 1 ano) e, caso não exista, solicitamos instalação do equipamento de medição para relatório técnico.",
+      "ucs": [],
+      "contatos": []
     },
     {
       "id": "CLI1777300983370",
@@ -857,17 +895,6 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
-    },
-    {
-      "id": "uocj2x1otchmoljv62r",
-      "token": "CLI-017",
-      "createdAt": "2026-04-30T13:59:02.787Z",
-      "updatedAt": "2026-04-30T13:59:02.787Z",
-      "razaoSocial": "Hiper Ideal (Guarajuba)",
-      "cnpj": "",
-      "obs": "Solicitação ao consultor Coelba WENDEL os dados de registros dos níveis de tensão no ponto de entrega (período de 1 ano) e, caso não exista, solicitamos instalação do equipamento de medição para relatório técnico.",
-      "ucs": [],
-      "contatos": []
     }
   ]
 }
