@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T13:59:25.547Z",
+  "updatedAt": "2026-04-30T17:45:06.782Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -895,6 +895,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
+    },
+    {
+      "id": "avamzbdcawmolrxw4e",
+      "token": "CLI-018",
+      "createdAt": "2026-04-30T17:45:06.782Z",
+      "updatedAt": "2026-04-30T17:45:06.782Z",
+      "razaoSocial": "Guma Móveis (Shop Lar)",
+      "cnpj": "15439339000166",
+      "obs": "Solicitada Troca de Titularidade bt da cc 7086086942 para o CNPJ 15439339000166 Guma Móveis",
+      "ucs": [],
+      "contatos": []
     }
   ]
 }
