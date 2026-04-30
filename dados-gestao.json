@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T17:51:28.705Z",
+  "updatedAt": "2026-04-30T17:52:39.338Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -204,6 +204,34 @@
           "uploadedAt": "2026-04-27T20:13:25.767Z"
         }
       ]
+    },
+    {
+      "id": "iyedcfegblmols7lbe",
+      "token": "ALT-2026-003",
+      "currentStage": 0,
+      "stageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-30",
+          "protocol": null,
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-30T17:52:39.338Z",
+      "updatedAt": "2026-04-30T17:52:39.338Z",
+      "tipo": "alteracao_carga",
+      "titulo": "Alteração de carga",
+      "uc": "",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-30",
+      "carga": "",
+      "notes": "Solicitação de alteração de carga para Eletroposto através da nota 9102417652.",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "clienteId": "vpr32cex92mols62tc",
+      "stakeholders": [],
+      "attachments": []
     }
   ],
   "demandas": [
@@ -891,6 +919,17 @@
       "updatedAt": "2026-04-27T19:53:11.234Z"
     },
     {
+      "id": "vpr32cex92mols62tc",
+      "token": "CLI-019",
+      "createdAt": "2026-04-30T17:51:28.704Z",
+      "updatedAt": "2026-04-30T17:51:28.704Z",
+      "razaoSocial": "Posto ABO Cajazeiras",
+      "cnpj": "",
+      "obs": "Solicitação de alteração de carga para Eletroposto",
+      "ucs": [],
+      "contatos": []
+    },
+    {
       "id": "CLI1777319173404",
       "token": "CLI-010",
       "razaoSocial": "Posto Gasoto",
@@ -933,17 +972,6 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
-    },
-    {
-      "id": "vpr32cex92mols62tc",
-      "token": "CLI-019",
-      "createdAt": "2026-04-30T17:51:28.704Z",
-      "updatedAt": "2026-04-30T17:51:28.704Z",
-      "razaoSocial": "Posto ABO Cajazeiras",
-      "cnpj": "",
-      "obs": "Solicitação de alteração de carga para Eletroposto",
-      "ucs": [],
-      "contatos": []
     }
   ]
 }
