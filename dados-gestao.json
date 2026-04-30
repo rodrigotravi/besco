@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T17:52:39.338Z",
+  "updatedAt": "2026-04-30T19:26:25.280Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -972,6 +972,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
+    },
+    {
+      "id": "h3os04m98ijmolvk6bk",
+      "token": "CLI-020",
+      "createdAt": "2026-04-30T19:26:25.280Z",
+      "updatedAt": "2026-04-30T19:26:25.280Z",
+      "razaoSocial": "Novo Mix (CD)",
+      "cnpj": "",
+      "obs": "Solicitado ao consultor WENDEL verificação técnica do fornecimento do ponto de entrega de energia para avaliar necessidade de ações corretivas.",
+      "ucs": [],
+      "contatos": []
     }
   ]
 }
