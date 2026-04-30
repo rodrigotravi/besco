@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T17:46:55.772Z",
+  "updatedAt": "2026-04-30T17:51:28.705Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -933,6 +933,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
+    },
+    {
+      "id": "vpr32cex92mols62tc",
+      "token": "CLI-019",
+      "createdAt": "2026-04-30T17:51:28.704Z",
+      "updatedAt": "2026-04-30T17:51:28.704Z",
+      "razaoSocial": "Posto ABO Cajazeiras",
+      "cnpj": "",
+      "obs": "Solicitação de alteração de carga para Eletroposto",
+      "ucs": [],
+      "contatos": []
     }
   ]
 }
