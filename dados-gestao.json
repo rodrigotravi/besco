@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T13:59:05.659Z",
+  "updatedAt": "2026-04-30T13:59:25.547Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -690,7 +690,7 @@
         }
       ],
       "createdAt": "2026-04-30T13:59:05.659Z",
-      "updatedAt": "2026-04-30T13:59:05.659Z",
+      "updatedAt": "2026-04-30T13:59:25.547Z",
       "tipo": "outro",
       "titulo": "Solicitação de Níveis de tensão no ponto de entrega",
       "uc": "7065380824",
