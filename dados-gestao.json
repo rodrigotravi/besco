@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-04-30T17:45:06.782Z",
+  "updatedAt": "2026-04-30T17:46:55.772Z",
   "ligacoes": [
     {
       "id": "t4x2vxizp3mohb799j",
@@ -704,6 +704,33 @@
       "protocols": [],
       "stakeholders": [],
       "attachments": []
+    },
+    {
+      "id": "jkt3j3q83zbmols087v",
+      "token": "DEM-2026-015",
+      "currentStage": 0,
+      "demStageData": [
+        {
+          "stage": 0,
+          "date": "2026-04-30",
+          "notes": ""
+        }
+      ],
+      "createdAt": "2026-04-30T17:46:55.771Z",
+      "updatedAt": "2026-04-30T17:46:55.771Z",
+      "tipo": "outro",
+      "titulo": "Troca de titularidade",
+      "uc": "7086086942",
+      "distribuidora": "Coelba / Neoenergia Bahia",
+      "emailDate": "2026-04-30",
+      "notes": "Solicitada Troca de Titularidade da cc 7086086942 para o CNPJ 15.439.339/0001-66 Guma Móveis (Shop Lar)",
+      "consultorNome": "",
+      "consultorTel": "",
+      "consultorEmail": "",
+      "clienteId": "avamzbdcawmolrxw4e",
+      "protocols": [],
+      "stakeholders": [],
+      "attachments": []
     }
   ],
   "clientes": [
@@ -740,6 +767,17 @@
       "contatos": [],
       "createdAt": "2026-04-27T19:26:57.891Z",
       "updatedAt": "2026-04-27T19:26:57.891Z"
+    },
+    {
+      "id": "avamzbdcawmolrxw4e",
+      "token": "CLI-018",
+      "createdAt": "2026-04-30T17:45:06.782Z",
+      "updatedAt": "2026-04-30T17:45:06.782Z",
+      "razaoSocial": "Guma Móveis (Shop Lar)",
+      "cnpj": "15439339000166",
+      "obs": "Solicitada Troca de Titularidade bt da cc 7086086942 para o CNPJ 15439339000166 Guma Móveis",
+      "ucs": [],
+      "contatos": []
     },
     {
       "id": "CLI1777308232121",
@@ -895,17 +933,6 @@
       "contatos": [],
       "createdAt": "2026-04-27T20:19:11.844Z",
       "updatedAt": "2026-04-27T20:19:11.844Z"
-    },
-    {
-      "id": "avamzbdcawmolrxw4e",
-      "token": "CLI-018",
-      "createdAt": "2026-04-30T17:45:06.782Z",
-      "updatedAt": "2026-04-30T17:45:06.782Z",
-      "razaoSocial": "Guma Móveis (Shop Lar)",
-      "cnpj": "15439339000166",
-      "obs": "Solicitada Troca de Titularidade bt da cc 7086086942 para o CNPJ 15439339000166 Guma Móveis",
-      "ucs": [],
-      "contatos": []
     }
   ]
 }
