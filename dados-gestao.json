@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-05-06T19:18:19.896Z",
+  "updatedAt": "2026-05-06T19:19:02.959Z",
   "grupos": [
     {
       "id": "grp-2d6ugs51",
@@ -8348,6 +8348,27 @@
       "createdAt": "2026-01-01T00:00:00.000Z",
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "currentStage": 5
+    },
+    {
+      "id": "mig-4dol346e",
+      "grupoId": "grp-riyxs47f",
+      "ucId": "uc-jddsnk6f",
+      "tipoFunil": "cativo",
+      "currentStage": 0,
+      "migrado": false,
+      "statusDenuncia": "",
+      "dataEnvioCarta": "",
+      "dataConfirmadaDistrib": "",
+      "dataPrevistaMigracao": "",
+      "dataEfetivaMigracao": "",
+      "impeditivos": "",
+      "statusAdequacao": "",
+      "statusComissionamento": "",
+      "statusPortabilidade": "",
+      "obs": "",
+      "history": [],
+      "createdAt": "2026-05-06T19:19:02.958Z",
+      "updatedAt": "2026-05-06T19:19:02.958Z"
     }
   ],
   "ticketsConcessionarias": [
@@ -8380,6 +8401,5 @@
       "updatedAt": "2026-04-22T21:50:32.129Z"
     }
   ],
-  "ticketsGestao": [],
-  "equipamentos": []
+  "ticketsGestao": []
 }
