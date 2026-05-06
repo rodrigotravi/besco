@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-05-06T19:18:14.012Z",
+  "updatedAt": "2026-05-06T19:18:19.896Z",
   "grupos": [
     {
       "id": "grp-2d6ugs51",
@@ -8381,21 +8381,5 @@
     }
   ],
   "ticketsGestao": [],
-  "equipamentos": [
-    {
-      "id": "EQ-0001",
-      "tipo": "Transformador de corrente",
-      "modelo": "daaaa",
-      "status": "ok",
-      "serial": "",
-      "patrimonio": "",
-      "grupoId": "grp-wwwn3gaf",
-      "ucId": null,
-      "instalacao": "",
-      "calibracao": "",
-      "localizacao": "",
-      "obs": "",
-      "createdAt": "2026-05-06T19:18:14.011Z"
-    }
-  ]
+  "equipamentos": []
 }
