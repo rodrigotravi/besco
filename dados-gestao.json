@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-05-06T19:19:02.959Z",
+  "updatedAt": "2026-05-06T19:19:11.007Z",
   "grupos": [
     {
       "id": "grp-2d6ugs51",
@@ -8354,8 +8354,8 @@
       "grupoId": "grp-riyxs47f",
       "ucId": "uc-jddsnk6f",
       "tipoFunil": "cativo",
-      "currentStage": 0,
-      "migrado": false,
+      "currentStage": 5,
+      "migrado": true,
       "statusDenuncia": "",
       "dataEnvioCarta": "",
       "dataConfirmadaDistrib": "",
@@ -8368,7 +8368,7 @@
       "obs": "",
       "history": [],
       "createdAt": "2026-05-06T19:19:02.958Z",
-      "updatedAt": "2026-05-06T19:19:02.958Z"
+      "updatedAt": "2026-05-06T19:19:11.007Z"
     }
   ],
   "ticketsConcessionarias": [
